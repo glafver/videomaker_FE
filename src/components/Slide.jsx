@@ -6,40 +6,34 @@ import useDeleteImage from '../hooks/useDeleteImage'
 
 const Slide = ({
     image,
-    slides,
     imgIndex,
     setCurrentSlideIndex,
-    setSlides,
     currentSlideIndex
 }) => {
     const deleteImageMutation = useDeleteImage()
     const deleteSlide = () => {
         deleteImageMutation.mutate(image)
-        let slidesNew = slides.filter((slide) => {
-            if (image.name !== slide.name) {
-                return slide
-            }
-        })
-        setSlides(slidesNew)
-        localStorage.setItem('slides', JSON.stringify(slidesNew))
+
         if (currentSlideIndex === imgIndex) {
             setCurrentSlideIndex(0)
         }
     }
 
     return (
-        <Card className='slide-wrapper'>
-            <img src={image.url} className='slide-image' onClick={() => {
+        <Card className='sortable-slide-wrapper'>
+            <img src={image.url} className='sortable-slide-image' onClick={() => {
                 setCurrentSlideIndex(imgIndex)
             }} />
 
             <Button
                 variant="danger"
-                className='delete-button'
+                className='sortable-slide-delete-button'
                 disabled={deleteImageMutation.isMutating}
                 onClick={() => deleteSlide()}>
                 <X />
             </Button>
+
+            <Card.Footer>{image.duration} sec.</Card.Footer>
         </Card>
     )
 }

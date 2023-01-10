@@ -3,18 +3,11 @@ import Card from 'react-bootstrap/Card'
 import { X } from 'react-bootstrap-icons'
 import useDeleteImage from '../hooks/useDeleteImage'
 
-const ImageCard = ({ image, slides, setSlides }) => {
+const ImageCard = ({ image }) => {
 	const deleteImageMutation = useDeleteImage()
 
 	const deleteSlide = () => {
 		deleteImageMutation.mutate(image)
-		let slidesNew = slides.filter((slide) => {
-			if (image.name !== slide.name) {
-				return slide
-			}
-		})
-		setSlides(slidesNew)
-		localStorage.setItem('slides', JSON.stringify(slidesNew))
 	}
 
 	return (

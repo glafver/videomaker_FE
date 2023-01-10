@@ -1,14 +1,13 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 import Alert from 'react-bootstrap/Alert'
 import { useDropzone } from 'react-dropzone'
 import useUploadImages from '../hooks/useUploadImages'
 
-const UploadImages = ({ slides, setSlides }) => {
+const UploadImages = () => {
 
     const uploadImages = useUploadImages()
 
     const onDrop = useCallback((acceptedFiles) => {
-        console.log(acceptedFiles)
 
         if (!acceptedFiles.length) {
             return
@@ -20,16 +19,6 @@ const UploadImages = ({ slides, setSlides }) => {
 
     }, [])
 
-    // useEffect(() => {
-    //     if (!uploadImages.isSuccess) {
-    //         return
-    //     }
-    //     let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
-    //     setSlides(slidesLocal)
-
-    // }, [uploadImages.isSuccess])
-
-
     const { getRootProps, getInputProps } = useDropzone({
         accept: {
             'image/jpeg': [],
@@ -37,7 +26,6 @@ const UploadImages = ({ slides, setSlides }) => {
             'image/webp': [],
         },
         maxFiles: 5,
-        // maxSize: 4 * 1024 * 1024,
         onDrop,
     })
 
