@@ -101,7 +101,7 @@ const SlideSettings = ({
                         name='caption'
                         {...register("caption", { maxLength: 5 })}
                     />
-                    {errors.caption && <p role="alert">Too long caption!</p>}
+                    {errors.caption && <p role="alert" style={{ color: '#b02a37' }}>Too long caption!</p>}
                 </FormGroup>
                 <hr />
                 <Button variant="primary" type="submit" className='my-2'>

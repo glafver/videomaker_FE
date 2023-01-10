@@ -2,13 +2,13 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import ImageCard from './ImageCard'
 
-const ImageGrid = ({ slides, setSlides }) => {
+const ImageGrid = ({ slides }) => {
 
 	return (
 		<Row xs={6}>
 			{slides && slides.map((image, index) => (
 				<Col key={index} className="d-flex mb-4">
-					<ImageCard image={image} setSlides={setSlides} slides={slides} />
+					<ImageCard image={image} />
 				</Col>
 			))}
 		</Row>

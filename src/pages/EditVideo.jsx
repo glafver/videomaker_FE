@@ -11,18 +11,21 @@ const EditVideo = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
-        if (slidesLocal.length === 0) {
-            navigate('/')
-            return
-        }
-        setSlides(slidesLocal)
+        window.addEventListener('storage', () => {
+            let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
+            setSlides(slidesLocal)
+            if (slidesLocal.length === 0) {
+                navigate('/')
+                return
+            }
+        })
+        window.dispatchEvent(new Event('storage'))
     }, [])
 
     return (
         <Container>
             <>
-                <Row className='edit-wrapper mb-4'>
+                <Row className='edit-wrapper mb-4 g-0'>
                     <div className='col-8 edit-left'>
                         {slides && slides.length !== 0 &&
                             <div className='current-slide-wrapper'>
@@ -45,6 +48,7 @@ const EditVideo = () => {
 
                 <Button
                     variant='secondary'
+                    style={{ marginLeft: '50%' }}
                     onClick={() => { console.log('create video!') }}>Create video! </Button>
             </>
         </Container>

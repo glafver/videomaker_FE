@@ -11,15 +11,11 @@ const HomePage = () => {
     const [slides, setSlides] = useState([])
 
     useEffect(() => {
-        let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
-        setSlides(slidesLocal)
-    }, [])
-
-    useEffect(() => {
         window.addEventListener('storage', () => {
             let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
             setSlides(slidesLocal)
         })
+        window.dispatchEvent(new Event('storage'))
     }, []);
 
 
@@ -30,11 +26,11 @@ const HomePage = () => {
                 <div className='fs-1'>Quick start</div>
                 <div className=''>Create a slideshow from photos</div>
 
-                <UploadImages slides={slides} setSlides={setSlides} />
+                <UploadImages />
 
                 <hr className="my-4" />
 
-                <ImageGrid slides={slides} setSlides={setSlides} />
+                <ImageGrid slides={slides} />
 
                 {slides.length ? <Button variant='secondary' onClick={() => { navigate('/edit_video') }}>Continue <ArrowRight /> </Button> : null}
 

@@ -1,7 +1,6 @@
 import { useState } from 'react'
-// import { doc, deleteDoc } from 'firebase/firestore'
 import { ref, deleteObject } from 'firebase/storage'
-import { db, storage } from '../firebase'
+import { storage } from '../firebase'
 
 const useDeleteImage = () => {
 	const [error, setError] = useState(null)
@@ -19,9 +18,14 @@ const useDeleteImage = () => {
 
 			await deleteObject(storageRef)
 
-			// const dbRef = doc(db, 'images', image.id)
-
-			// await deleteDoc(dbRef)
+			let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
+			let slidesNew = slidesLocal.filter((slide) => {
+				if (image.name !== slide.name) {
+					return slide
+				}
+			})
+			localStorage.setItem('slides', JSON.stringify(slidesNew))
+			window.dispatchEvent(new Event('storage'))
 
 		} catch (e) {
 			setIsError(true)
