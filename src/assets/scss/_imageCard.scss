@@ -1,0 +1,19 @@
+.image-body {
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+.delete-button {
+    position: absolute;
+    padding: 0px;
+    top: -15px;
+    right: -15px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+    svg {
+        vertical-align: 0;
+        font-size: 40px
+    }
+}
