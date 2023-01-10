@@ -1,0 +1,63 @@
+.edit-wrapper {
+    height: 500px;
+    margin-top: 25px;
+}
+
+.edit-left {
+    background-color: lightgrey;
+    border-right: 1px solid #222529;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.edit-right {
+    background-color: lightgrey;
+    height: 100%;
+    padding: 20px;
+}
+
+.current-slide-wrapper {
+    aspect-ratio: 1.5;
+    background-color: #222529;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.current-slide-image {
+    max-height: 100%;
+}
+
+.sortable-slides-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    user-select: none
+}
+
+.sortable-slide {
+    cursor: grab;
+    object-fit: cover;
+    display: flex;
+    user-select: none;
+}
+
+.slide-image {
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.sortable-slide-dragged {
+    pointer-events: none;
+
+    & .delete-button {
+        display: none;
+    }
+}
+
+.form-range {
+    position: relative;
+    top: 5px;
+}
