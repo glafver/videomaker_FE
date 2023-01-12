@@ -18,7 +18,7 @@ const Navigation = () => {
                     />{' '}
                     Videomaker
                 </Navbar.Brand>
-                <Nav.Link style={{ color: 'white' }} href="">How to use videomaker</Nav.Link>
+                {/* <Nav.Link style={{ color: 'white' }} href="">How to use videomaker</Nav.Link> */}
             </Container>
         </Navbar>
     )

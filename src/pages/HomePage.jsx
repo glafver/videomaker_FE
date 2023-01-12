@@ -5,6 +5,7 @@ import ImageGrid from '../components/ImageGrid'
 import Button from 'react-bootstrap/esm/Button';
 import { ArrowRight } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom'
+import HowTo from '../components/HowTo.jsx';
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -22,17 +23,20 @@ const HomePage = () => {
     return (
         <>
 
-            <Container className='text-center'>
+            <Container className='text-center home-page'>
                 <div className='fs-1'>Quick start</div>
-                <div className=''>Create a slideshow from photos</div>
+                <div className='h5'>Create a slideshow from photos</div>
 
                 <UploadImages />
 
-                <hr className="my-4" />
+                {slides.length
+                    ? <div className='images-wrapper' >
+                        <ImageGrid slides={slides} />
 
-                <ImageGrid slides={slides} />
-
-                {slides.length ? <Button variant='secondary' onClick={() => { navigate('/edit_video') }}>Continue <ArrowRight /> </Button> : null}
+                        <Button variant='secondary' onClick={() => { navigate('/edit_video') }}>Continue <ArrowRight /> </Button>
+                    </div>
+                    : null}
+                <HowTo />
 
             </Container>
         </>

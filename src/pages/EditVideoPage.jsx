@@ -4,11 +4,16 @@ import { Container, Row, Button } from 'react-bootstrap'
 import Slides from '../components/Slides'
 import SlideSettings from '../components/SlideSettings'
 import { useNavigate } from 'react-router-dom'
+import StatusModal from '../components/StatusModal'
+import useCreateVideo from '../hooks/useCreateVideo'
 
-const EditVideo = () => {
+const EditVideoPage = () => {
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
     const [slides, setSlides] = useState()
+
     const navigate = useNavigate()
+
+    const createVideo = useCreateVideo()
 
     useEffect(() => {
         window.addEventListener('storage', () => {
@@ -49,10 +54,12 @@ const EditVideo = () => {
                 <Button
                     variant='secondary'
                     style={{ marginLeft: '50%' }}
-                    onClick={() => { console.log('create video!') }}>Create video! </Button>
+                    onClick={() => { createVideo.create() }}>Create video! </Button>
+
+                <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} />
             </>
         </Container>
     )
 }
 
-export default EditVideo
+export default EditVideoPage

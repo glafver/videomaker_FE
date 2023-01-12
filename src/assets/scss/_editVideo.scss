@@ -1,3 +1,5 @@
+@import 'colorsVideomaker';
+
 .edit-wrapper {
     height: 500px;
     margin-top: 25px;
@@ -9,7 +11,6 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    // padding: 20px;
 }
 
 .current-slide-wrapper {
@@ -35,12 +36,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     user-select: none;
-    margin-bottom: 75px;
 }
 
 .sortable-slide {
     cursor: grab;
-    height: 100px;
+    height: 175px;
 
 }
 
@@ -86,4 +86,57 @@
 .form-range {
     position: relative;
     top: 5px;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background: $blue_videomaker;
+        cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background: $blue_videomaker;
+        cursor: pointer;
+    }
+}
+
+.form-check-input:checked {
+    background-color: $blue_videomaker;
+    border-color: $blue_videomaker;
+}
+
+.slide-settings-submit {
+    background-color: $blue_videomaker;
+    border-color: $blue_videomaker;
+}
+
+.waiting-loading {
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    width: 46%;
+
+    .modal-content {
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #faf9f9;
+
+        img {
+            height: 75%;
+        }
+
+        button {
+            background-color: $pink_videomaker;
+            border-color: $pink_videomaker;
+        }
+    }
+}
+
+.modal-open {
+    padding: 0 !important;
 }

@@ -1,8 +1,9 @@
 import './assets/scss/App.scss'
 import { Routes, Route } from 'react-router-dom'
 import HomePage from './pages/HomePage'
-import EditVideo from './pages/EditVideo'
+import EditVideoPage from './pages/EditVideoPage'
 import Navigation from './pages/partials/Navigation'
+import VideoPage from './pages/VideoPage'
 
 function App() {
 
@@ -11,7 +12,8 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/edit_video" element={<EditVideo />} />
+        <Route path="/edit_video" element={<EditVideoPage />} />
+        <Route path="/your_video" element={<VideoPage />} />
       </Routes>
     </div>
   )

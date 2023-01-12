@@ -1,0 +1,55 @@
+@import 'colorsVideomaker';
+
+.dropzone-wrapper {
+	border: 2px dashed #ccc;
+	border-radius: 4px;
+	background-color: #f8f8f8;
+	text-align: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	padding: 2rem 1.25rem;
+}
+
+.images-wrapper {
+	padding-top: 45px;
+	padding-bottom: 45px;
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+	margin-top: 45px;
+
+}
+
+.image-body {
+	object-fit: cover;
+	aspect-ratio: 1;
+}
+
+.delete-button {
+	position: absolute;
+	padding: 0px;
+	top: -15px;
+	right: -15px;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+
+	svg {
+		vertical-align: 0;
+		font-size: 40px
+	}
+}
+
+.how-to {
+	width: 100%;
+	margin-bottom: 45px;
+	margin-top: 45px;
+
+	img {
+		width: 30%;
+	}
+
+	ol {
+		font-size: 26px;
+		text-align: left;
+	}
+}
