@@ -16,7 +16,7 @@ const ImageCard = ({ image }) => {
 
 				<img src={image.url} className='image-body' />
 
-				<Button variant="danger" className='delete-button' disabled={deleteImageMutation.isMutating} onClick={() => deleteSlide()}>
+				<Button className='delete-button videomaker-btn-pink' disabled={deleteImageMutation.isMutating} onClick={() => deleteSlide()}>
 					<X />
 				</Button>
 

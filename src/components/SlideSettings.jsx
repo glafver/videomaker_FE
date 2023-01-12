@@ -22,6 +22,7 @@ const SlideSettings = ({
         slides[currentSlideIndex].duration = duration
         slides[currentSlideIndex].caption = data.caption
         localStorage.setItem('slides', JSON.stringify(slides))
+        window.dispatchEvent(new Event('storage'))
         setSlideUpdated(true)
     };
 
@@ -104,7 +105,7 @@ const SlideSettings = ({
                     {errors.caption && <p role="alert" style={{ color: '#b02a37' }}>Too long caption!</p>}
                 </FormGroup>
                 <hr />
-                <Button variant="primary" type="submit" className='my-2'>
+                <Button type="submit" className='my-2 slide-settings-submit'>
                     Submit
                 </Button>
                 {slideUpdated && <p>Slide settings updated!</p>}

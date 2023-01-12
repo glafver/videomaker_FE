@@ -1,4 +1,24 @@
 @import 'bootstrap/scss/bootstrap';
-@import 'dropzone';
-@import 'imageCard';
+@import 'homePage';
 @import 'editVideo';
+@import 'colorsVideomaker';
+
+.videomaker-btn-pink {
+    background-color: $pink_videomaker;
+    border-color: $pink_videomaker;
+
+    &:hover {
+        background-color: $pink_dark_videomaker;
+        border-color: $pink_dark_videomaker;
+    }
+}
+
+.videomaker-btn-blue {
+    background-color: $blue_videomaker;
+    border-color: $blue_videomaker;
+
+    &:hover {
+        background-color: $blue_dark_videomaker;
+        border-color: $blue_dark_videomaker;
+    }
+}

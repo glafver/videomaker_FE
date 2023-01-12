@@ -26,8 +26,7 @@ const Slide = ({
             }} />
 
             <Button
-                variant="danger"
-                className='sortable-slide-delete-button'
+                className='sortable-slide-delete-button videomaker-btn-pink'
                 disabled={deleteImageMutation.isMutating}
                 onClick={() => deleteSlide()}>
                 <X />

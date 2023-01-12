@@ -31,7 +31,7 @@ const UploadImages = () => {
 
     return (
         <>
-            <div {...getRootProps()} id="dropzone-wrapper">
+            <div {...getRootProps()} className="dropzone-wrapper">
                 <input {...getInputProps()} />
 
                 <div>
