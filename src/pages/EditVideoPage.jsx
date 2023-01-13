@@ -11,6 +11,8 @@ const EditVideoPage = () => {
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
     const [slides, setSlides] = useState()
 
+    const [slideClicked, setSlideClicked] = useState(false)
+
     const navigate = useNavigate()
 
     const createVideo = useCreateVideo()
@@ -41,7 +43,7 @@ const EditVideoPage = () => {
                         }
                     </div>
                     <div className='col-4 edit-right'>
-                        <SlideSettings slides={slides} currentSlideIndex={currentSlideIndex} />
+                        <SlideSettings slides={slides} currentSlideIndex={currentSlideIndex} slideClicked={slideClicked} setSlideClicked={setSlideClicked} />
                     </div>
                 </Row>
                 <Slides
@@ -49,6 +51,7 @@ const EditVideoPage = () => {
                     currentSlideIndex={currentSlideIndex}
                     slides={slides}
                     setSlides={setSlides}
+                    setSlideClicked={setSlideClicked}
                 />
 
                 <Button
@@ -56,7 +59,7 @@ const EditVideoPage = () => {
                     style={{ marginLeft: '50%' }}
                     onClick={() => { createVideo.create() }}>Create video! </Button>
 
-                <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} />
+                <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} create={createVideo.create} />
             </>
         </Container>
     )

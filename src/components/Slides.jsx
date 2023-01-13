@@ -7,7 +7,8 @@ const Slides = ({
     setCurrentSlideIndex,
     currentSlideIndex,
     slides,
-    setSlides
+    setSlides,
+    setSlideClicked
 }) => {
 
     const onSortEnd = (oldIndex, newIndex) => {
@@ -32,6 +33,7 @@ const Slides = ({
                                 imgIndex={index}
                                 setCurrentSlideIndex={setCurrentSlideIndex}
                                 currentSlideIndex={currentSlideIndex}
+                                setSlideClicked={setSlideClicked}
                             />
                         </div>
                     </SortableItem>

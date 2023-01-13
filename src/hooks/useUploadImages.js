@@ -40,7 +40,7 @@ const useUploadImages = () => {
                 path: storageRef.fullPath,
                 url,
                 duration: 1,
-                transition: 'fade-in',
+                transition: 'fade',
                 caption: ''
             }
 

@@ -9,27 +9,46 @@ const useCreateVideo = () => {
     const data = {
         "slideshow": [
             {
-                "src": "https://pictures.com/1",
-                "duration": 3,
-                "in": "slideRight",
-                "out": "slideLeft",
+                "src": "https://drive.google.com/file/d/1F2azW7P_ZB6SiKpGjfQVtBz1GoxgCabr/view?usp=share_link",
+                "duration": 1,
+                "transition": "wipeleft",
                 "caption": "Super"
             },
             {
-                "src": "https://pictures.com/2",
+                "src": "https://cdn.pixabay.com/photo/2020/04/05/11/32/moon-5005711_960_720.jpg",
+                "duration": 6,
+                "transition": "fade",
+                "caption": "Puper"
+            },
+            {
+                "src": "https://cdn.pixabay.com/photo/2016/04/13/13/14/grass-1326759_960_720.jpg",
                 "duration": 3,
-                "in": "slideLeft",
-                "out": "slideRight",
+                "transition": "horzopen",
+                "caption": "Super"
+            },
+            {
+                "src": "https://cdn.pixabay.com/photo/2020/04/05/11/32/moon-5005711_960_720.jpg",
+                "duration": 6,
                 "caption": "Puper"
             }
-        ],
-        "soundtrack": {
-            "src": "https://music.com/1"
-        }
+        ]
     }
 
     const create = async () => {
         setVideoStatus('PREPARING')
+
+        // let slidesLocal = JSON.parse(localStorage.getItem('slides'))
+
+        // const data = JSON.stringify({
+        //     slideshow: slidesLocal.map(slide => {
+        //         return {
+        //             src: slide.url,
+        //             duration: slide.duration,
+        //             transition: slide.transition,
+        //             caption: slide.caption
+        //         }
+        //     })
+        // })
 
         axios.post(`${import.meta.env.VITE_SERVER_BASE_URL}/video`, data, {
             headers: {
