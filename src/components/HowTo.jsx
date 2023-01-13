@@ -1,5 +1,5 @@
 import React from 'react'
-import Videomaker from '../assets/images/videomaker_2.png'
+import Videomaker from '../assets/images/videomaker_1.png'
 
 const HowTo = () => {
     return (

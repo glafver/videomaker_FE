@@ -18,7 +18,7 @@ const useDeleteImage = () => {
 
 			await deleteObject(storageRef)
 
-			let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
+			let slidesLocal = JSON.parse(localStorage.getItem('slides'))
 			let slidesNew = slidesLocal.filter((slide) => {
 				if (image.name !== slide.name) {
 					return slide

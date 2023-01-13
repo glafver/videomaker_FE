@@ -1,47 +1,62 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Row, Col, Button, FormGroup } from 'react-bootstrap'
+import { Form, Row, Col, FormGroup } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
+import FormGroupTransitions from './FormGroupTransitions'
 
 const SlideSettings = ({
     slides,
-    currentSlideIndex
+    currentSlideIndex,
+    slideClicked,
+    setSlideClicked
 }) => {
 
-    const [duration, setDuration] = useState(0);
-    const [slideUpdated, setSlideUpdated] = useState(false);
+    const [duration, setDuration] = useState(1);
+
+    const [previousSlideIndex, setPreviousSlideIndex] = useState(0)
 
     const {
         register,
-        handleSubmit,
         reset,
+        watch,
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        slides[currentSlideIndex].transition = data.transition
-        slides[currentSlideIndex].duration = duration
-        slides[currentSlideIndex].caption = data.caption
-        localStorage.setItem('slides', JSON.stringify(slides))
-        window.dispatchEvent(new Event('storage'))
-        setSlideUpdated(true)
-    };
+    const watchForm = watch()
 
     useEffect(() => {
         if (!slides) {
             return
         }
-        setSlideUpdated(false)
         setDuration(slides[currentSlideIndex].duration)
         reset({
             transition: slides[currentSlideIndex].transition,
             caption: slides[currentSlideIndex].caption
         })
-    }, [slides, currentSlideIndex])
+    }, [slides])
+
+    useEffect(() => {
+        if (!slides) {
+            return
+        }
+        slides[previousSlideIndex].duration = duration
+        slides[previousSlideIndex].transition = watchForm.transition
+        slides[previousSlideIndex].caption = watchForm.caption
+        localStorage.setItem('slides', JSON.stringify(slides))
+        window.dispatchEvent(new Event('storage'))
+
+        setPreviousSlideIndex(currentSlideIndex)
+        setSlideClicked(false)
+        setDuration(slides[currentSlideIndex].duration)
+        reset({
+            transition: slides[currentSlideIndex].transition,
+            caption: slides[currentSlideIndex].caption
+        })
+    }, [slideClicked])
 
     return (
         <>
             <div className='h3'>{currentSlideIndex + 1} Slide Settings</div>
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form >
                 <Form.Group as={Row} controlId="duration">
                     <Form.Label>Duration:</Form.Label>
                     <Col xs="9">
@@ -62,53 +77,17 @@ const SlideSettings = ({
                     </Col>
                 </Form.Group>
                 <hr />
-                <Form.Group controlId="transition">
-                    <Form.Label>Transition:</Form.Label>
-                    <Row>
-                        <Col xs='4'>
-                            <Form.Check
-                                type='radio'
-                                label={`Fade-in`}
-                                name='transition'
-                                value={'fade-in'}
-                                {...register("transition")}
-                            />
-                        </Col>
-                        <Col xs='4'>
-                            <Form.Check
-                                type='radio'
-                                label={`Fade-out`}
-                                name='transition'
-                                value={'fade-out'}
-                                {...register("transition")}
-                            />
-                        </Col>
-                        <Col xs='4'>
-                            <Form.Check
-                                type='radio'
-                                label={`Dissolve`}
-                                name='transition'
-                                value={'dissolve'}
-                                {...register("transition")}
-                            />
-                        </Col>
-                    </Row>
-                </Form.Group>
-                <hr />
                 <FormGroup>
-                    <Form.Label>Caption (5 letters max.):</Form.Label>
+                    <Form.Label>Caption (15 letters max.):</Form.Label>
                     <Form.Control
                         type="text"
                         name='caption'
-                        {...register("caption", { maxLength: 5 })}
+                        {...register("caption", { maxLength: 15 })}
                     />
-                    {errors.caption && <p role="alert" style={{ color: '#b02a37' }}>Too long caption!</p>}
                 </FormGroup>
+
                 <hr />
-                <Button type="submit" className='my-2 slide-settings-submit'>
-                    Submit
-                </Button>
-                {slideUpdated && <p>Slide settings updated!</p>}
+                <FormGroupTransitions register={register} watch={watch} />
             </Form>
         </>
     )
