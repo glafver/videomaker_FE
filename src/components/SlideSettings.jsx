@@ -77,16 +77,6 @@ const SlideSettings = ({
                     </Col>
                 </Form.Group>
                 <hr />
-                <FormGroup>
-                    <Form.Label>Caption (15 letters max.):</Form.Label>
-                    <Form.Control
-                        type="text"
-                        name='caption'
-                        {...register("caption", { maxLength: 15 })}
-                    />
-                </FormGroup>
-
-                <hr />
                 <FormGroupTransitions register={register} watch={watch} />
             </Form>
         </>

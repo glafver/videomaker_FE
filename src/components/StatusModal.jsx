@@ -3,7 +3,7 @@ import { RingLoader } from 'react-spinners'
 import { Button, Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const StatusModal = ({ videoStatus, orderId, create }) => {
+const StatusModal = ({ videoStatus, orderId, setVideoStatus }) => {
 
     const navigate = useNavigate()
 
@@ -23,10 +23,10 @@ const StatusModal = ({ videoStatus, orderId, create }) => {
                     <p className='mt-5'>Please wait, we prepare your video. It may take some time. Do not close the window.</p>
                 </>
             }
-            {videoStatus === 'FAILED' || videoStatus === 'UNKNOWN' &&
+            {videoStatus === 'FAILED' &&
                 <>
                     <p className='mt-5'>An error has occurred, please try again.</p>
-                    <Button className='videomaker-btn-pink' onClick={() => { create() }}>Try again</Button>
+                    <Button className='videomaker-btn-pink' onClick={() => { setVideoStatus(null) }}>Try again</Button>
                 </>
             }
         </Modal>

@@ -23,8 +23,8 @@ const VideoPage = () => {
             <div className='d-flex flex-column align-items-center justify-content-center mt-5'>
                 {videoURL &&
                     <>
-                        <video width="400" controls>
-                            <source src={videoURL} type="video/mp4" disablePictureInPicture disableRemotePlayback />
+                        <video width="80%" controls>
+                            <source src={videoURL} type="video/mp4" disablePictureInPicture disableRemotePlayback onError={() => { navigate('/') }} />
                         </video>
 
                         <p className='mt-5'>Press <ThreeDotsVertical /> to download your video</p>

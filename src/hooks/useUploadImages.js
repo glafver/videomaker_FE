@@ -40,8 +40,7 @@ const useUploadImages = () => {
                 path: storageRef.fullPath,
                 url,
                 duration: 1,
-                transition: 'fade',
-                caption: ''
+                transition: 'fade'
             }
 
             let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []

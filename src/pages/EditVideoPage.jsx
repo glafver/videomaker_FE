@@ -59,7 +59,7 @@ const EditVideoPage = () => {
                     style={{ marginLeft: '50%' }}
                     onClick={() => { createVideo.create() }}>Create video! </Button>
 
-                <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} create={createVideo.create} />
+                <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} setVideoStatus={createVideo.setVideoStatus} />
             </>
         </Container>
     )
