@@ -89,7 +89,9 @@ const FormGroupTransitions = ({ register, watch }) => {
                     ))}
                 </Form.Select>
             </Form.Group >
-            <img src={`../../public/images/transitions/${watchTransition}.gif`} style={{ width: '200px', marginTop: '15px', display: `${show ? '' : 'none'}` }} alt="" />
+            {watchTransition &&
+                <img src={`/images/transitions/${watchTransition}.gif`} style={{ width: '200px', marginTop: '15px', display: `${show ? '' : 'none'}` }} alt="" />
+            }
         </>
     )
 }
