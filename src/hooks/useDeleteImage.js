@@ -24,6 +24,7 @@ const useDeleteImage = () => {
 					return slide
 				}
 			})
+
 			localStorage.setItem('slides', JSON.stringify(slidesNew))
 			window.dispatchEvent(new Event('storage'))
 

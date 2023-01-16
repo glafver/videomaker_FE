@@ -19,7 +19,8 @@ const useCreateVideo = () => {
                     transition: slide.transition,
                     caption: slide.caption
                 }
-            })
+            }),
+            userID: localStorage.getItem('userID')
         })
 
 
@@ -28,6 +29,7 @@ const useCreateVideo = () => {
                 'Content-Type': 'application/json',
             }
         }).then((response) => {
+            localStorage.setItem('orderID', response.data.id)
             setOrderId(response.data.id)
         }).catch((error) => {
             console.log(error)
@@ -44,6 +46,7 @@ const useCreateVideo = () => {
             axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/status/${orderId}`)
                 .then((response) => {
                     if (response.data.status === 'READY') {
+                        localStorage.setItem('videoURL', response.data.url)
                         setVideoStatus('READY')
                         clearInterval(checkStatusInterval);
                     } else if (response.data.status === 'FAILED') {

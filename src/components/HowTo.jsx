@@ -1,12 +1,11 @@
 import React from 'react'
-import Videomaker from '../assets/images/videomaker_1.png'
 
 const HowTo = () => {
     return (
         <div className='how-to'>
             <p className='h1'>How to use Videomaker?</p>
             <div className='d-flex justify-content-around align-items-center'>
-                <img src={Videomaker} alt="" />
+                <img src={'/images/videomaker.png'} alt="" />
                 <ol>
                     <li>Download your photos</li>
                     <li>Choose duration and transition for every slide</li>
