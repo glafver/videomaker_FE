@@ -2,7 +2,6 @@ import React from 'react'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import BrandLogo from '../../assets/images/favicon.png'
 
 const Navigation = () => {
     return (
@@ -11,7 +10,7 @@ const Navigation = () => {
                 <Navbar.Brand href="/">
                     <img
                         alt=""
-                        src={BrandLogo}
+                        src="/images/favicon.png"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"

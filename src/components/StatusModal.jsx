@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { RingLoader } from 'react-spinners'
 import { Button, Modal } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-const StatusModal = ({ videoStatus, orderId, setVideoStatus }) => {
+const StatusModal = ({ videoStatus, setVideoStatus }) => {
 
     const navigate = useNavigate()
 
     useEffect(() => {
         if (videoStatus === 'READY') {
-            localStorage.setItem('videoURL', `${import.meta.env.VITE_SERVER_BASE_URL}/video/${orderId}`)
             navigate('/your_video')
         }
     }, [videoStatus])

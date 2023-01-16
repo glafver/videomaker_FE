@@ -35,7 +35,7 @@ const UploadImages = () => {
                 <input {...getInputProps()} />
 
                 <div>
-                    <span>Click here to upload your photos or drag and drop them here <br /> (maximum 5 files at the same time)</span>
+                    <span>Click here to upload your photos or drag and drop them here. Minimum 2 photos should be upload! <br /> (maximum 5 files at the same time)</span>
                 </div>
 
             </div>

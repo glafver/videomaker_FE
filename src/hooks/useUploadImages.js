@@ -27,7 +27,7 @@ const useUploadImages = () => {
 
             const storageFilename = `${uuid}.${ext}`
 
-            const storageRef = ref(storage, `images/${userID}/${storageFilename}`)
+            const storageRef = ref(storage, `/${userID}/${storageFilename}`)
 
             const uploadTask = uploadBytesResumable(storageRef, image)
 
