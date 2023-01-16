@@ -11,8 +11,6 @@ const EditVideoPage = () => {
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
     const [slides, setSlides] = useState()
 
-    const [slideClicked, setSlideClicked] = useState(false)
-
     const navigate = useNavigate()
 
     const createVideo = useCreateVideo()
@@ -32,7 +30,7 @@ const EditVideoPage = () => {
     return (
         <Container>
             <>
-                <Row className='edit-wrapper mb-4 g-0'>
+                <Row className='edit-wrapper g-0'>
                     <div className='col-8 edit-left'>
                         {slides && slides.length !== 0 &&
                             <div className='current-slide-wrapper'>
@@ -42,8 +40,9 @@ const EditVideoPage = () => {
                             </div>
                         }
                     </div>
-                    <div className='col-4 edit-right'>
-                        <SlideSettings slides={slides} currentSlideIndex={currentSlideIndex} slideClicked={slideClicked} setSlideClicked={setSlideClicked} />
+                    <div className='col-4 edit-right' >
+                        <SlideSettings slides={slides} currentSlideIndex={currentSlideIndex}
+                        />
                     </div>
                 </Row>
                 <Slides
@@ -51,7 +50,6 @@ const EditVideoPage = () => {
                     currentSlideIndex={currentSlideIndex}
                     slides={slides}
                     setSlides={setSlides}
-                    setSlideClicked={setSlideClicked}
                 />
 
                 <Button

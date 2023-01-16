@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { Form, Row, Col } from 'react-bootstrap'
+import React, { useState, useRef } from 'react'
+import { Form } from 'react-bootstrap'
 import { Eye } from 'react-bootstrap-icons';
 
 const FormGroupTransitions = ({ register, watch }) => {
@@ -90,7 +90,7 @@ const FormGroupTransitions = ({ register, watch }) => {
                 </Form.Select>
             </Form.Group >
             {watchTransition &&
-                <img src={`/images/transitions/${watchTransition}.gif`} style={{ width: '200px', marginTop: '15px', display: `${show ? '' : 'none'}` }} alt="" />
+                <img src={`/images/transitions/${watchTransition}.gif`} className='transition-img' style={{ display: `${show ? '' : 'none'}` }} alt="" />
             }
         </>
     )
