@@ -1,61 +1,46 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Row, Col, FormGroup } from 'react-bootstrap'
+import { Form, Row, Col } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
 import FormGroupTransitions from './FormGroupTransitions'
 
 const SlideSettings = ({
     slides,
-    currentSlideIndex,
-    slideClicked,
-    setSlideClicked
+    currentSlideIndex
 }) => {
 
     const [duration, setDuration] = useState(1);
 
-    const [previousSlideIndex, setPreviousSlideIndex] = useState(0)
-
     const {
         register,
         reset,
-        watch,
-        formState: { errors },
+        watch
     } = useForm();
 
     const watchForm = watch()
 
-    useEffect(() => {
-        if (!slides) {
-            return
-        }
-        setDuration(slides[currentSlideIndex].duration)
-        reset({
-            transition: slides[currentSlideIndex].transition,
-            caption: slides[currentSlideIndex].caption
-        })
-    }, [slides])
-
-    useEffect(() => {
-        if (!slides) {
-            return
-        }
-        slides[previousSlideIndex].duration = duration
-        slides[previousSlideIndex].transition = watchForm.transition
-        slides[previousSlideIndex].caption = watchForm.caption
+    const mouseLeftSettings = () => {
+        slides[currentSlideIndex].duration = duration
+        slides[currentSlideIndex].transition = watchForm.transition
+        slides[currentSlideIndex].caption = watchForm.caption
         localStorage.setItem('slides', JSON.stringify(slides))
         window.dispatchEvent(new Event('storage'))
+    }
 
-        setPreviousSlideIndex(currentSlideIndex)
-        setSlideClicked(false)
+    useEffect(() => {
+        if (!slides) {
+            return
+        }
+
         setDuration(slides[currentSlideIndex].duration)
         reset({
             transition: slides[currentSlideIndex].transition,
             caption: slides[currentSlideIndex].caption
         })
-    }, [slideClicked])
+    }, [slides, currentSlideIndex])
 
     return (
-        <>
-            <div className='h3'>{currentSlideIndex + 1} Slide Settings</div>
+        <div onMouseOut={() => { mouseLeftSettings() }}>
+            <div className='h3'>Slide {currentSlideIndex + 1} Settings</div>
             <Form >
                 <Form.Group as={Row} controlId="duration">
                     <Form.Label>Duration:</Form.Label>
@@ -79,7 +64,7 @@ const SlideSettings = ({
                 <hr />
                 <FormGroupTransitions register={register} watch={watch} />
             </Form>
-        </>
+        </div>
     )
 }
 

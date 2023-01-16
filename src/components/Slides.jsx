@@ -7,8 +7,7 @@ const Slides = ({
     setCurrentSlideIndex,
     currentSlideIndex,
     slides,
-    setSlides,
-    setSlideClicked
+    setSlides
 }) => {
 
     const onSortEnd = (oldIndex, newIndex) => {
@@ -19,7 +18,7 @@ const Slides = ({
 
     return (
         <>
-            <p>Change the order of your slides by dragging them</p>
+            <p className='sortable-slides-description'>Change the order of your slides by dragging them</p>
             <SortableList
                 onSortEnd={onSortEnd}
                 className='sortable-slides-row'
@@ -27,13 +26,12 @@ const Slides = ({
             >
                 {slides && slides.map((item, index) => (
                     <SortableItem key={index}>
-                        <div className='sortable-slide' style={{ width: `${item.duration * 100}px` }}>
+                        <div className='sortable-slide-wrapper' style={{ width: `${item.duration * 100}px` }}>
                             <Slide
                                 image={item}
                                 imgIndex={index}
                                 setCurrentSlideIndex={setCurrentSlideIndex}
                                 currentSlideIndex={currentSlideIndex}
-                                setSlideClicked={setSlideClicked}
                             />
                         </div>
                     </SortableItem>

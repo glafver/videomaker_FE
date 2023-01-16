@@ -8,8 +8,7 @@ const Slide = ({
     image,
     imgIndex,
     setCurrentSlideIndex,
-    currentSlideIndex,
-    setSlideClicked
+    currentSlideIndex
 }) => {
     const deleteImageMutation = useDeleteImage()
     const deleteSlide = () => {
@@ -21,9 +20,8 @@ const Slide = ({
     }
 
     return (
-        <Card className='sortable-slide-wrapper' style={{ backgroundColor: `${imgIndex === currentSlideIndex ? '#d3d3d3' : ''}` }}>
+        <Card className='sortable-slide' style={{ backgroundColor: `${imgIndex === currentSlideIndex ? '#d3d3d3' : ''}` }}>
             <img src={image.url} className='sortable-slide-image' onClick={() => {
-                setSlideClicked(true)
                 setCurrentSlideIndex(imgIndex)
             }} />
 
