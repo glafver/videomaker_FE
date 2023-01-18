@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Container, Button } from 'react-bootstrap'
-import { ThreeDotsVertical } from 'react-bootstrap-icons'
+import { Download } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
 import useDeleteImage from '../hooks/useDeleteImage'
 import useDeleteVideo from '../hooks/useDeleteVideo'
@@ -24,11 +24,16 @@ const VideoPage = () => {
         navigate('/')
     }
 
+    const goToSettings = () => {
+        deleteVideoMutation.mutate()
+        localStorage.removeItem('orderID')
+        navigate(-1)
+    }
+
     useEffect(() => {
         let video = localStorage.getItem('videoURL')
         setVideoURL(video)
     }, [])
-
 
     return (
         <Container>
@@ -39,11 +44,16 @@ const VideoPage = () => {
                             <source src={videoURL} type="video/mp4" disablePictureInPicture disableRemotePlayback onError={() => { clearAll() }} />
                         </video>
 
-                        <p className='mt-3'>Press <ThreeDotsVertical /> to download your video</p>
+                        <p className='mt-3'>Press
+                            <a href={videoURL}>
+                                <Button className='videomaker-btn-blue mx-2'>
+                                    <Download />
+                                </Button>
+                            </a>to download your video</p>
                     </>
                 }
                 <div>
-                    <Button className='videomaker-btn-pink mx-2' onClick={() => { navigate(-1) }}>Change video settings</Button>
+                    <Button className='videomaker-btn-pink mx-2' onClick={() => { goToSettings() }}>Change video settings</Button>
                     <Button className='videomaker-btn-blue mx-2' onClick={() => { clearAll() }}>Create a new video!</Button>
                 </div>
 
