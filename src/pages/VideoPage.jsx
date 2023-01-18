@@ -40,19 +40,19 @@ const VideoPage = () => {
             <div className='d-flex flex-column align-items-center justify-content-center mt-3'>
                 {videoURL &&
                     <>
-                        <video width="75%" controls>
-                            <source src={videoURL} type="video/mp4" disablePictureInPicture disableRemotePlayback onError={() => { clearAll() }} />
+                        <video width="75%" controls disablePictureInPicture disableRemotePlayback playsinline controlsList="noplaybackrate nodownload">
+                            <source src={videoURL} type="video/mp4" onError={() => { clearAll() }} />
                         </video>
 
                         <p className='mt-3'>Press
-                            <a href={videoURL}>
-                                <Button className='videomaker-btn-blue mx-2'>
+                            <a download href={videoURL}>
+                                <Button className='videomaker-btn-blue download-btn'>
                                     <Download />
                                 </Button>
                             </a>to download your video</p>
                     </>
                 }
-                <div>
+                <div className='video-page-btn-wrapper'>
                     <Button className='videomaker-btn-pink mx-2' onClick={() => { goToSettings() }}>Change video settings</Button>
                     <Button className='videomaker-btn-blue mx-2' onClick={() => { clearAll() }}>Create a new video!</Button>
                 </div>

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { Form } from 'react-bootstrap'
 import { Eye } from 'react-bootstrap-icons';
 
-const FormGroupTransitions = ({ register, watch }) => {
+const SlideSettingsTransitions = ({ register, watch }) => {
 
     const transitions = [
         {
@@ -96,4 +96,4 @@ const FormGroupTransitions = ({ register, watch }) => {
     )
 }
 
-export default FormGroupTransitions
+export default SlideSettingsTransitions

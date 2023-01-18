@@ -54,7 +54,7 @@ const EditVideoPage = () => {
 
                 <Button
                     variant='secondary'
-                    style={{ marginLeft: '50%' }}
+                    className='create-video-btn'
                     onClick={() => { createVideo.create() }}>Create video! </Button>
 
                 <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} setVideoStatus={createVideo.setVideoStatus} />

@@ -5,7 +5,15 @@
     margin-top: 10px;
     margin-bottom: 10px;
 
+    @media screen and (max-width: 994px) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+    }
+
     @media screen and (min-width: 2500px) {
+
         margin-top: 30px;
         margin-bottom: 30px;
     }
@@ -18,6 +26,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 994px) {
+        width: 100%;
+    }
 
     .current-slide-wrapper {
         aspect-ratio: 16/9;
@@ -46,6 +58,10 @@
     .transition-img {
         width: 160px;
         margin-top: 8px;
+    }
+
+    @media screen and (max-width: 994px) {
+        width: 100%;
     }
 
     @media screen and (min-width: 2500px) {
@@ -148,12 +164,14 @@
     justify-content: center;
     width: 46%;
 
+
     .modal-content {
         height: 80vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        padding: 25px;
 
         img {
             height: 75%;
@@ -164,8 +182,40 @@
             border-color: $pink_videomaker;
         }
     }
+
+    @media screen and (max-width: 994px) {
+        width: 96%;
+    }
 }
 
 .modal-open {
     padding: 0 !important;
+}
+
+.create-video-btn {
+    margin-left: 50%;
+
+    @media screen and (max-width: 994px) {
+        margin-left: 30%;
+        margin-bottom: 15px;
+    }
+}
+
+
+// VideoPage style
+
+.download-btn {
+    padding: 0px 5px 2px 5px;
+    margin: 0 10px;
+}
+
+.video-page-btn-wrapper {
+    @media screen and (max-width: 994px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        margin: 7px;
+    }
 }
