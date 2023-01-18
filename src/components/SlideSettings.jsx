@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Row, Col } from 'react-bootstrap'
 import { useForm } from 'react-hook-form'
-import FormGroupTransitions from './FormGroupTransitions'
+import SlideSettingsTransitions from './SlideSettingsTransitions'
 
 const SlideSettings = ({
     slides,
@@ -62,7 +62,7 @@ const SlideSettings = ({
                     </Col>
                 </Form.Group>
                 <hr />
-                <FormGroupTransitions register={register} watch={watch} />
+                <SlideSettingsTransitions register={register} watch={watch} />
             </Form>
         </div>
     )

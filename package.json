@@ -26,7 +26,8 @@
     "react-router-dom": "^6.6.1",
     "react-spinners": "^0.13.7",
     "sass": "^1.57.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "video-react": "^0.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
