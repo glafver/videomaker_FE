@@ -20,7 +20,8 @@ const useCreateVideo = () => {
                     caption: slide.caption
                 }
             }),
-            userID: localStorage.getItem('userID')
+            userID: localStorage.getItem('userID'),
+            soundtrack: localStorage.getItem('soundtrack') === 'none' ? '' : localStorage.getItem('soundtrack')
         })
 
 

@@ -11,11 +11,11 @@
 }
 
 .images-wrapper {
-	padding-top: 45px;
-	padding-bottom: 45px;
+	padding-top: 35px;
+	padding-bottom: 35px;
 	border-top: 1px solid lightgrey;
 	border-bottom: 1px solid lightgrey;
-	margin-top: 45px;
+	margin-top: 35px;
 
 	@media screen and (max-width: 900px) {
 		margin-top: 15px;
@@ -33,15 +33,12 @@
 .image-grid-card-wrapper {
 	@media screen and (max-width: 900px) {
 		padding: 0 5px;
-
 	}
 }
 
 .image-body {
 	object-fit: cover;
 	aspect-ratio: 1;
-
-
 }
 
 .delete-button {
@@ -66,8 +63,8 @@
 
 .how-to {
 	width: 100%;
-	margin-bottom: 45px;
-	margin-top: 45px;
+	margin-bottom: 35px;
+	margin-top: 35px;
 
 	img {
 		width: 30%;

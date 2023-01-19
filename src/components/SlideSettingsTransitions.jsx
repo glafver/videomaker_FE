@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react'
-import { Form } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Form, Col } from 'react-bootstrap'
 import { Eye } from 'react-bootstrap-icons';
 
-const SlideSettingsTransitions = ({ register, watch }) => {
+const SlideSettingsTransitions = ({ slides, currentSlideIndex, transition, setTransition }) => {
 
     const transitions = [
         {
@@ -68,31 +68,46 @@ const SlideSettingsTransitions = ({ register, watch }) => {
     ]
 
     const [show, setShow] = useState(false);
-    const target = useRef(null);
-
-    const watchTransition = watch('transition')
+    const [transitionToAll, setTransitionToAll] = useState(false)
 
     return (
-        <>
+        <div className='transition-wrapper'>
             <Form.Group controlId="transition">
                 <div className=''>
                     <Form.Label>Transition:</Form.Label>
-                    {watchTransition && <Eye ref={target} onClick={() => setShow(!show)} style={{ cursor: 'pointer', marginLeft: '15px' }}></Eye>}
-
+                    <Eye onClick={() => setShow(!show)} style={{ cursor: 'pointer', marginLeft: '15px' }}></Eye>
                 </div>
 
                 <Form.Select
-                    {...register("transition")}
+                    disabled={transitionToAll}
+                    onChange={e => {
+                        setTransition(e.target.value)
+                        slides[currentSlideIndex].transition = e.target.value
+                        localStorage.setItem('slides', JSON.stringify(slides))
+                        window.dispatchEvent(new Event('storage'))
+                    }}
+                    value={transition}
                 >
                     {transitions.map((transition, index) => (
                         <option key={index} value={transition.value}>{transition.label}</option>
                     ))}
                 </Form.Select>
             </Form.Group >
-            {watchTransition &&
-                <img src={`/images/transitions/${watchTransition}.gif`} className='transition-img' style={{ display: `${show ? '' : 'none'}` }} alt="" />
-            }
-        </>
+            <Col className='mt-2'>
+                <Form.Check
+                    label={`Apply to all`}
+                    onChange={() => {
+                        setTransitionToAll(!transitionToAll)
+                        slides.forEach(slide => {
+                            slide.transition = slides[currentSlideIndex].transition
+                        });
+                        localStorage.setItem('slides', JSON.stringify(slides))
+                        window.dispatchEvent(new Event('storage'))
+                    }}
+                />
+            </Col>
+            <img src={`/images/transitions/${transition}.gif`} className='transition-img' style={{ display: `${show ? '' : 'none'}` }} alt="" />
+        </div>
     )
 }
 

@@ -12,7 +12,7 @@ const HowTo = () => {
                     <li>Change the order of slides if needed</li>
                     <li>Add transition to every slide if you want</li>
                     <li>Press the button and just wait until your video is ready</li>
-                    <li>Download video on your computer</li>
+                    <li>Download video on your device</li>
                 </ol>
             </div>
         </div>
