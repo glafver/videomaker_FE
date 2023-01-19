@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import EditVideoPage from './pages/EditVideoPage'
 import Navigation from './pages/partials/Navigation'
 import VideoPage from './pages/VideoPage'
+import Footer from './pages/partials/Footer'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/edit_video" element={<EditVideoPage />} />
         <Route path="/your_video" element={<VideoPage />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

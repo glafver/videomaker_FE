@@ -1,5 +1,4 @@
 import React from 'react'
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 
@@ -17,7 +16,6 @@ const Navigation = () => {
                     />{' '}
                     Videomaker
                 </Navbar.Brand>
-                {/* <Nav.Link style={{ color: 'white' }} href="">How to use videomaker</Nav.Link> */}
             </Container>
         </Navbar>
     )

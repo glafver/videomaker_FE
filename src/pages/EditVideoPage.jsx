@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Container, Row, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import Slides from '../components/Slides'
 import SlideSettings from '../components/SlideSettings'
 import { useNavigate } from 'react-router-dom'
@@ -30,8 +30,8 @@ const EditVideoPage = () => {
     return (
         <Container>
             <>
-                <Row className='edit-wrapper g-0'>
-                    <div className='col-8 edit-left'>
+                <div className='edit-wrapper'>
+                    <div className='edit-left'>
                         {slides && slides.length !== 0 &&
                             <div className='current-slide-wrapper'>
                                 <img
@@ -40,11 +40,11 @@ const EditVideoPage = () => {
                             </div>
                         }
                     </div>
-                    <div className='col-4 edit-right' >
+                    <div className='edit-right' >
                         <SlideSettings slides={slides} currentSlideIndex={currentSlideIndex}
                         />
                     </div>
-                </Row>
+                </div>
                 <Slides
                     setCurrentSlideIndex={setCurrentSlideIndex}
                     currentSlideIndex={currentSlideIndex}
@@ -52,10 +52,9 @@ const EditVideoPage = () => {
                     setSlides={setSlides}
                 />
 
-                <Button
-                    variant='secondary'
-                    className='create-video-btn'
-                    onClick={() => { createVideo.create() }}>Create video! </Button>
+                <button
+                    className='create-video-btn button-52 button-52-blue'
+                    onClick={() => { createVideo.create() }}>Create video! </button>
 
                 <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} setVideoStatus={createVideo.setVideoStatus} />
             </>

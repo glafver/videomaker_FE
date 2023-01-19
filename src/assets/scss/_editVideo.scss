@@ -1,19 +1,22 @@
 @import 'colorsVideomaker';
 
+
+
 .edit-wrapper {
-    height: 50vh;
     margin-top: 10px;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
 
-    @media screen and (max-width: 994px) {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        height: auto;
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+        height: 363.94px;
     }
 
-    @media screen and (min-width: 2500px) {
 
+    @media screen and (min-width: 2500px) {
         margin-top: 30px;
         margin-bottom: 30px;
     }
@@ -21,14 +24,14 @@
 
 .edit-left {
     background-color: lightgrey;
-    border-right: 1px solid $black_videomaker;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
-    @media screen and (max-width: 994px) {
-        width: 100%;
+    @media screen and (min-width: 992px) {
+        width: 50%;
+        border-right: 1px solid $gray_dark_videomaker;
     }
 
     .current-slide-wrapper {
@@ -50,6 +53,7 @@
     background-color: lightgrey;
     height: 100%;
     padding: 12px;
+    width: 100%;
 
     hr {
         margin: 8px 0;
@@ -57,15 +61,75 @@
 
     .transition-img {
         width: 160px;
-        margin-top: 8px;
+        height: 85px;
+        margin-top: 2px;
     }
 
-    @media screen and (max-width: 994px) {
-        width: 100%;
+    @media screen and (min-width: 992px) {
+        width: 50%;
     }
 
     @media screen and (min-width: 2500px) {
-        padding: 30px
+        padding: 13px 30px;
+    }
+}
+
+.form-range {
+    position: relative;
+    top: 5px;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background: $blue_videomaker;
+        cursor: pointer;
+    }
+
+    &::-moz-range-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background: $blue_videomaker;
+        cursor: pointer;
+    }
+}
+
+.form-check-input:checked {
+    background-color: $blue_videomaker;
+    border-color: $blue_videomaker;
+}
+
+.settings-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+    }
+}
+
+.transition-wrapper {
+    width: 100%;
+    border-bottom: 1px solid $gray_dark_videomaker;
+    padding-bottom: 12px;
+
+    @media screen and (min-width: 992px) {
+        width: 50%;
+        height: 191px;
+        padding-right: 12px;
+        padding-bottom: 0;
+        border-right: 1px solid $gray_dark_videomaker;
+        border-bottom: 0;
+    }
+}
+
+.soundtrack-wrapper {
+    width: 100%;
+    padding-top: 12px;
+
+    @media screen and (min-width: 992px) {
+        width: 50%;
+        padding-left: 12px;
+        padding-top: 0;
     }
 }
 
@@ -74,11 +138,55 @@
 
 }
 
+.sortable-slides-row-wrapper {
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.sortable-slides-row-wrapper::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.sortable-slides-row-wrapper::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.sortable-slides-row-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.541);
+}
+
+.sortable-slides-row-wrapper::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.sortable-slides-row-wrapper::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.733);
+}
+
 .sortable-slides-row {
     display: flex;
     flex-direction: row;
     user-select: none;
     margin-bottom: 10px;
+
+    width: fit-content;
+    min-width: 100%;
+    --background: rgba(0, 0, 0, .35);
+    --size: 10px;
+    background-image:
+        linear-gradient(to right, var(--background) var(--size), transparent var(--size)),
+        linear-gradient(to bottom, var(--background) var(--size), transparent var(--size)),
+        linear-gradient(to right, var(--background) var(--size), transparent var(--size)),
+        linear-gradient(to bottom, var(--background) var(--size), transparent var(--size)),
+        linear-gradient(to bottom, transparent var(--size), var(--background) var(--size));
+    background-size: calc(var(--size) * 2) var(--size), calc(var(--size) * 2) var(--size), calc(var(--size) * 2) var(--size), calc(var(--size) * 2) var(--size), 100% calc(100% - var(--size) * 3);
+    background-repeat: repeat-x;
+    background-position: 0 var(--size), top left, 0 calc(100% - var(--size)), bottom left, 0 var(--size);
+
+    padding: calc((var(--size) * 3)) 0 calc((var(--size) * 3)) 0;
 }
 
 .sortable-slide-wrapper {
@@ -92,6 +200,7 @@
             height: 100px;
             border: 1px solid gray;
             margin: 2px;
+            // min-width: 100px;
         }
 
         .card-footer {
@@ -129,35 +238,6 @@
     }
 }
 
-.form-range {
-    position: relative;
-    top: 5px;
-
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        background: $blue_videomaker;
-        cursor: pointer;
-    }
-
-    &::-moz-range-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        background: $blue_videomaker;
-        cursor: pointer;
-    }
-}
-
-.form-check-input:checked {
-    background-color: $blue_videomaker;
-    border-color: $blue_videomaker;
-}
-
-.slide-settings-submit {
-    background-color: $blue_videomaker;
-    border-color: $blue_videomaker;
-}
-
 .waiting-loading {
     max-width: none;
     display: flex;
@@ -193,7 +273,7 @@
 }
 
 .create-video-btn {
-    margin-left: 50%;
+    margin-left: 42%;
 
     @media screen and (max-width: 994px) {
         margin-left: 30%;
@@ -201,11 +281,10 @@
     }
 }
 
-
 // VideoPage style
 
 .download-btn {
-    padding: 0px 5px 2px 5px;
+    padding: 13px 13px 8px 19px !important;
     margin: 0 10px;
 }
 

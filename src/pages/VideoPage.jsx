@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { Download } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
 import useDeleteImage from '../hooks/useDeleteImage'
@@ -14,19 +14,21 @@ const VideoPage = () => {
     const deleteImageMutation = useDeleteImage()
     const deleteVideoMutation = useDeleteVideo()
 
-    const clearAll = () => {
+    const clearAll = async () => {
         let slidesLocal = JSON.parse(localStorage.getItem('slides'))
         slidesLocal.forEach(slide => {
             deleteImageMutation.mutate(slide)
         });
         deleteVideoMutation.mutate()
         localStorage.removeItem('orderID')
+        localStorage.removeItem('soundtrack')
         navigate('/')
     }
 
     const goToSettings = () => {
         deleteVideoMutation.mutate()
         localStorage.removeItem('orderID')
+        localStorage.removeItem('soundtrack')
         navigate(-1)
     }
 
@@ -40,21 +42,21 @@ const VideoPage = () => {
             <div className='d-flex flex-column align-items-center justify-content-center mt-3'>
                 {videoURL &&
                     <>
-                        <video width="75%" controls disablePictureInPicture disableRemotePlayback playsinline controlsList="noplaybackrate nodownload">
+                        <video width="75%" controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
                             <source src={videoURL} type="video/mp4" onError={() => { clearAll() }} />
                         </video>
 
                         <p className='mt-3'>Press
                             <a download href={videoURL}>
-                                <Button className='videomaker-btn-blue download-btn'>
+                                <button className='download-btn button-52'>
                                     <Download />
-                                </Button>
+                                </button>
                             </a>to download your video</p>
                     </>
                 }
                 <div className='video-page-btn-wrapper'>
-                    <Button className='videomaker-btn-pink mx-2' onClick={() => { goToSettings() }}>Change video settings</Button>
-                    <Button className='videomaker-btn-blue mx-2' onClick={() => { clearAll() }}>Create a new video!</Button>
+                    <button className='button-52-pink button-52' onClick={() => { goToSettings() }}>Change video settings</button>
+                    <button className='button-52-blue button-52' onClick={() => { clearAll() }}>Create a new video!</button>
                 </div>
 
             </div>

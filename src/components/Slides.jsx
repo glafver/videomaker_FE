@@ -19,24 +19,33 @@ const Slides = ({
     return (
         <>
             <p className='sortable-slides-description'>Change the order of your slides by dragging them</p>
-            <SortableList
-                onSortEnd={onSortEnd}
-                className='sortable-slides-row'
-                draggedItemClassName="sortable-slide-dragged"
+            <div className='sortable-slides-row-wrapper'
+                id='sortableSlidesRowWrapper'
+                onWheel={(e) => {
+                    const sortableSlidesRowWrapper = document.getElementById("sortableSlidesRowWrapper");
+                    if (e.deltaY > 0) sortableSlidesRowWrapper.scrollLeft += 100;
+                    else sortableSlidesRowWrapper.scrollLeft -= 100;
+                }}
             >
-                {slides && slides.map((item, index) => (
-                    <SortableItem key={index}>
-                        <div className='sortable-slide-wrapper' style={{ width: `${item.duration * 100}px` }}>
-                            <Slide
-                                image={item}
-                                imgIndex={index}
-                                setCurrentSlideIndex={setCurrentSlideIndex}
-                                currentSlideIndex={currentSlideIndex}
-                            />
-                        </div>
-                    </SortableItem>
-                ))}
-            </SortableList>
+                <SortableList
+                    onSortEnd={onSortEnd}
+                    className='sortable-slides-row'
+                    draggedItemClassName="sortable-slide-dragged"
+                >
+                    {slides && slides.map((item, index) => (
+                        <SortableItem key={index}>
+                            <div className='sortable-slide-wrapper' style={{ width: `${item.duration * 100}px` }}>
+                                <Slide
+                                    image={item}
+                                    imgIndex={index}
+                                    setCurrentSlideIndex={setCurrentSlideIndex}
+                                    currentSlideIndex={currentSlideIndex}
+                                />
+                            </div>
+                        </SortableItem>
+                    ))}
+                </SortableList>
+            </div>
         </>
     )
 }
