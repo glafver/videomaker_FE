@@ -14,10 +14,9 @@ const useCreateVideo = () => {
         const data = JSON.stringify({
             slideshow: slidesLocal.map(slide => {
                 return {
-                    src: slide.url,
+                    url: slide.url,
                     duration: (~~slide.duration),
-                    transition: slide.transition,
-                    caption: slide.caption
+                    transition: slide.transition
                 }
             }),
             userID: localStorage.getItem('userID'),
