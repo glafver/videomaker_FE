@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/edit_video" element={<EditVideoPage />} />
         <Route path="/your_video" element={<VideoPage />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
       <Footer />
     </div>
