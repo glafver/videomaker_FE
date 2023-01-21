@@ -5,6 +5,7 @@ import EditVideoPage from './pages/EditVideoPage'
 import Navigation from './pages/partials/Navigation'
 import VideoPage from './pages/VideoPage'
 import Footer from './pages/partials/Footer'
+import SharePage from './pages/SharePage'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/edit_video" element={<EditVideoPage />} />
         <Route path="/your_video" element={<VideoPage />} />
+        <Route path="/share/:id/:order" element={<SharePage />} />
         <Route path="*" element={<HomePage />} />
       </Routes>
       <Footer />

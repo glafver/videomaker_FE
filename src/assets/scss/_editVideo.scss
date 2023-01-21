@@ -332,3 +332,27 @@
         margin: 7px;
     }
 }
+
+.share-link-wrapper {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+    align-items: center;
+    width: 100%;
+}
+
+.clipboard {
+    text-align: center;
+    width: 50px;
+}
+
+.download-video {
+    height: 32px;
+    width: 32px;
+    border-radius: 5px;
+    color: white;
+    background-color: $gray_dark_videomaker;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+}

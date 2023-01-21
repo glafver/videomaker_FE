@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import { Download } from 'react-bootstrap-icons'
+import { Download, Link } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
 import useDeleteImage from '../hooks/useDeleteImage'
 import useDeleteVideo from '../hooks/useDeleteVideo'
+import { WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon, FacebookMessengerShareButton, FacebookMessengerIcon, EmailShareButton, EmailIcon } from "react-share"
 
 const VideoPage = () => {
 
@@ -13,6 +14,8 @@ const VideoPage = () => {
 
     const deleteImageMutation = useDeleteImage()
     const deleteVideoMutation = useDeleteVideo()
+
+    const shareURL = `${import.meta.env.VITE_DEPLOY_URL}/share/${localStorage.getItem('userID')}/${localStorage.getItem('orderID')}`
 
     const clearAll = async () => {
         let slidesLocal = JSON.parse(localStorage.getItem('slides'))
@@ -41,16 +44,53 @@ const VideoPage = () => {
             <div className='d-flex flex-column align-items-center justify-content-center mt-3'>
                 {videoURL &&
                     <>
-                        <video width="75%" controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
+                        <video width="100%" controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
                             <source src={videoURL} type="video/mp4" onError={() => { clearAll() }} />
                         </video>
 
-                        <p className='mt-3'>Press
+                        <p className='mt-3 fw-bold'>
+                            Download your video:
                             <a download href={videoURL}>
-                                <button className='download-btn button-videomaker'>
-                                    <Download />
-                                </button>
-                            </a>to download your video</p>
+                                <Download className='download-video' />
+                            </a>
+                        </p>
+
+                        <div className='w-100 d-flex align-items-center justify-content-center flex-wrap pb-4'>
+                            <p className='mb-1 fw-bold'>Copy link:</p>
+                            <div className='share-link-wrapper'>
+                                <div style={{ borderRight: '1px solid black', padding: '5px', flexGrow: '1' }}>{shareURL}</div>
+                                <div className='clipboard'>
+                                    <Link style={{ height: 32, width: 32, color: 'darkgray', cursor: 'pointer' }}
+                                        onClick={() => { navigator.clipboard.writeText(shareURL) }}>
+                                    </Link>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div style={{ marginBottom: '16px' }}>
+                            <span className='me-2 fw-bold'>Share:</span>
+                            <WhatsappShareButton
+                                url={shareURL}
+                                quote={'Have a look at my video!'}>
+                                <WhatsappIcon size={32} round={true} />
+                            </WhatsappShareButton>
+                            <TelegramShareButton
+                                url={shareURL}
+                                quote={'Have a look at my video!'}>
+                                <TelegramIcon size={32} round={true} />
+                            </TelegramShareButton>
+                            <EmailShareButton
+                                url={shareURL}
+                                quote={'Have a look at my video!'}>
+                                <EmailIcon size={32} round={true} />
+                            </EmailShareButton>
+                            <FacebookMessengerShareButton
+                                url={shareURL}
+                                quote={'Have a look at my video!'}>
+                                <FacebookMessengerIcon size={32} round={true} />
+                            </FacebookMessengerShareButton>
+                        </div>
                     </>
                 }
                 <div className='video-page-btn-wrapper'>
@@ -59,7 +99,7 @@ const VideoPage = () => {
                 </div>
 
             </div>
-        </Container>
+        </Container >
     )
 }
 
