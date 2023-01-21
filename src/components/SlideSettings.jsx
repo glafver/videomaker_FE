@@ -24,7 +24,7 @@ const SlideSettings = ({
 
     return (
         <div>
-            <div className='h3'>Slide {currentSlideIndex + 1} Settings</div>
+            <div className='h4'>Slide {currentSlideIndex + 1} Settings</div>
             <Form >
                 <SlideSettingsDuration slides={slides} currentSlideIndex={currentSlideIndex} duration={duration} setDuration={setDuration} />
                 <hr />

@@ -13,6 +13,7 @@ const Slide = ({
     const deleteImageMutation = useDeleteImage()
     const deleteSlide = () => {
         deleteImageMutation.mutate(image)
+        setCurrentSlideIndex(0)
 
         if (currentSlideIndex === imgIndex) {
             setCurrentSlideIndex(0)
@@ -20,11 +21,8 @@ const Slide = ({
     }
 
     return (
-        <Card className='sortable-slide' style={{ backgroundColor: `${imgIndex === currentSlideIndex ? '#d3d3d3' : ''}` }}>
-            <img src={image.url} className='sortable-slide-image' onClick={() => {
-                setCurrentSlideIndex(imgIndex)
-            }} />
-
+        <Card className='sortable-slide' style={{ backgroundColor: `${imgIndex === currentSlideIndex ? '#fff' : ''}` }}>
+            <img src={image.url} className='sortable-slide-image' />
             <Button
                 className='sortable-slide-delete-button videomaker-btn-pink'
                 disabled={deleteImageMutation.isMutating}
@@ -32,7 +30,11 @@ const Slide = ({
                 <X />
             </Button>
 
-            <Card.Footer>{image.duration} sec.</Card.Footer>
+            <Card.Footer
+                onClick={() => {
+                    setCurrentSlideIndex(imgIndex)
+                }}><span>{image.duration} sec.</span>
+            </Card.Footer>
         </Card>
     )
 }

@@ -1,7 +1,7 @@
 @import 'colorsVideomaker';
 
 .dropzone-wrapper {
-	border: 2px dashed #ccc;
+	border: 2px dotted #ccc;
 	border-radius: 4px;
 	background-color: #f8f8f8;
 	text-align: center;
@@ -31,6 +31,11 @@
 }
 
 .image-grid-card-wrapper {
+	.card {
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+		border: 0;
+	}
+
 	@media screen and (max-width: 900px) {
 		padding: 0 5px;
 	}
@@ -39,6 +44,7 @@
 .image-body {
 	object-fit: cover;
 	aspect-ratio: 1;
+	border-radius: inherit;
 }
 
 .delete-button {

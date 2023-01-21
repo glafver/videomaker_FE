@@ -29,7 +29,7 @@ const HomePage = () => {
     return (
         <>
 
-            <Container className='text-center home-page'>
+            <Container className='text-center home-page page'>
                 <div className='fs-1'>Quick start</div>
                 <div className='h5'>Create a slideshow from photos</div>
 
@@ -39,7 +39,7 @@ const HomePage = () => {
                     ? <div className='images-wrapper' >
                         <ImageGrid slides={slides} />
 
-                        <button className='button-52' onClick={() => { navigate('/edit_video') }}>Continue <ArrowRight /> </button>
+                        <button className='button-videomaker' onClick={() => { navigate('/edit_video') }}>Continue <ArrowRight /> </button>
                     </div>
                     : null}
                 <HowTo />

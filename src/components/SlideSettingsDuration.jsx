@@ -25,6 +25,7 @@ const SlideSettingsDuration = ({ slides, currentSlideIndex, setDuration, duratio
             </Col>
             <Col xs="3 d-flex align-items-center">
                 <Form.Control
+                    style={{ width: '35px' }}
                     disabled={durationToAll}
                     value={duration}
                     onChange={e => {
