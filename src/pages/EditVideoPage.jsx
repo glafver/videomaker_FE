@@ -28,7 +28,7 @@ const EditVideoPage = () => {
     }, [])
 
     return (
-        <Container>
+        <Container className='page'>
             <>
                 <div className='edit-wrapper'>
                     <div className='edit-left'>
@@ -53,7 +53,7 @@ const EditVideoPage = () => {
                 />
 
                 <button
-                    className='create-video-btn button-52 button-52-blue'
+                    className='create-video-btn button-videomaker button-videomaker-blue'
                     onClick={() => { createVideo.create() }}>Create video! </button>
 
                 <StatusModal videoStatus={createVideo.videoStatus} orderId={createVideo.orderId} setVideoStatus={createVideo.setVideoStatus} />

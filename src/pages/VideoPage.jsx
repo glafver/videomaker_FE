@@ -28,7 +28,6 @@ const VideoPage = () => {
     const goToSettings = () => {
         deleteVideoMutation.mutate()
         localStorage.removeItem('orderID')
-        localStorage.removeItem('soundtrack')
         navigate(-1)
     }
 
@@ -38,7 +37,7 @@ const VideoPage = () => {
     }, [])
 
     return (
-        <Container>
+        <Container className='page'>
             <div className='d-flex flex-column align-items-center justify-content-center mt-3'>
                 {videoURL &&
                     <>
@@ -48,15 +47,15 @@ const VideoPage = () => {
 
                         <p className='mt-3'>Press
                             <a download href={videoURL}>
-                                <button className='download-btn button-52'>
+                                <button className='download-btn button-videomaker'>
                                     <Download />
                                 </button>
                             </a>to download your video</p>
                     </>
                 }
                 <div className='video-page-btn-wrapper'>
-                    <button className='button-52-pink button-52' onClick={() => { goToSettings() }}>Change video settings</button>
-                    <button className='button-52-blue button-52' onClick={() => { clearAll() }}>Create a new video!</button>
+                    <button className='button-videomaker-pink button-videomaker' onClick={() => { goToSettings() }}>Change video settings</button>
+                    <button className='button-videomaker-blue button-videomaker' onClick={() => { clearAll() }}>Create a new video!</button>
                 </div>
 
             </div>

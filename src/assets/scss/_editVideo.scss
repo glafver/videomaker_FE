@@ -9,6 +9,7 @@
     flex-direction: column;
     height: auto;
     width: 100%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
     @media screen and (min-width: 992px) {
         flex-direction: row;
@@ -98,6 +99,17 @@
     border-color: $blue_videomaker;
 }
 
+.form-select:focus,
+.form-control:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(28 69 135 / 25%);
+    border-color: rgb(28 69 135 / 25%);
+}
+
+.form-label {
+    font-weight: bold;
+}
+
 .settings-wrapper {
     display: flex;
     flex-direction: column;
@@ -140,7 +152,8 @@
 
 .sortable-slides-row-wrapper {
     overflow: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .sortable-slides-row-wrapper::-webkit-scrollbar {
@@ -170,7 +183,7 @@
     display: flex;
     flex-direction: row;
     user-select: none;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
 
     width: fit-content;
     min-width: 100%;
@@ -194,21 +207,42 @@
 
     .sortable-slide {
         border-radius: 0;
+        background-color: #d3d3d3;
 
         .sortable-slide-image {
             object-fit: cover;
             height: 100px;
-            border: 1px solid gray;
             margin: 2px;
-            // min-width: 100px;
         }
 
         .card-footer {
-            font-size: 12px;
-            padding: 4px 16px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background-color: #d3d3d300;
+            font-size: 25px;
+            text-align: center;
+
+            span {
+                color: transparent;
+            }
+        }
+
+        .card-footer:hover {
+            background-color: #d3d3d394;
+
+            span {
+                width: 100%;
+                color: #00000082;
+            }
         }
 
         .sortable-slide-delete-button {
+            z-index: 2;
             position: absolute;
             padding: 0px;
             top: 2px;
