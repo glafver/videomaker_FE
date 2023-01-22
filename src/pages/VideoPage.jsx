@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import { Download, Link } from 'react-bootstrap-icons'
+import { Download } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
 import useDeleteImage from '../hooks/useDeleteImage'
 import useDeleteVideo from '../hooks/useDeleteVideo'
@@ -9,6 +9,7 @@ import { WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon, F
 const VideoPage = () => {
 
     const [videoURL, setVideoURL] = useState(null)
+    const [copied, setCopied] = useState(false)
 
     const navigate = useNavigate()
 
@@ -56,16 +57,15 @@ const VideoPage = () => {
                         </p>
 
                         <div className='w-100 d-flex align-items-center justify-content-center flex-wrap pb-4'>
-                            <p className='mb-1 fw-bold'>Copy link:</p>
+                            <p className='mb-1 fw-bold'>{!copied ? 'Copy link:' : 'Link copied!'}</p>
                             <div className='share-link-wrapper'>
-                                <div style={{ borderRight: '1px solid black', padding: '5px', flexGrow: '1' }}>{shareURL}</div>
-                                <div className='clipboard'>
-                                    <Link style={{ height: 32, width: 32, color: 'darkgray', cursor: 'pointer' }}
-                                        onClick={() => { navigator.clipboard.writeText(shareURL) }}>
-                                    </Link>
-                                </div>
+                                <div className='link'
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(shareURL)
+                                        setCopied(true)
+                                    }}
+                                >{shareURL}</div>
                             </div>
-
                         </div>
 
                         <div style={{ marginBottom: '16px' }}>

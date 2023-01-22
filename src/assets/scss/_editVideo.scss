@@ -341,12 +341,14 @@
     border-radius: 5px;
     align-items: center;
     width: 100%;
-    color: gray
+    color: gray;
 }
 
-.clipboard {
-    text-align: center;
-    width: 50px;
+.link {
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-word;
+    flex-grow: 1;
 }
 
 .download-video {
