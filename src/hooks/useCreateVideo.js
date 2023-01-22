@@ -52,6 +52,9 @@ const useCreateVideo = () => {
                     } else if (response.data.status === 'FAILED') {
                         setVideoStatus('FAILED')
                         clearInterval(checkStatusInterval);
+                    } else if (response.data.status === 'UNKNOWN') {
+                        setVideoStatus('FAILED')
+                        clearInterval(checkStatusInterval);
                     }
                 }).catch((error) => {
                     console.log(error)

@@ -9,7 +9,10 @@ import useDeleteVideo from '../hooks/useDeleteVideo'
 
 const HomePage = () => {
     const navigate = useNavigate()
-    const [slides, setSlides] = useState([])
+    const [slides, setSlides] = useState()
+    const [maxFiles, setMaxFiles] = useState(6)
+    const [message, setMessage] = useState()
+
     const deleteVideoMutation = useDeleteVideo()
 
     useEffect(() => {
@@ -33,11 +36,12 @@ const HomePage = () => {
                 <div className='fs-1'>Quick start</div>
                 <div className='h5'>Create a slideshow from photos</div>
 
-                <UploadImages />
 
-                {slides.length
+                < UploadImages slides={slides} maxFiles={maxFiles} message={message} setMessage={setMessage} />
+
+                {slides && slides.length
                     ? <div className='images-wrapper' >
-                        <ImageGrid slides={slides} />
+                        <ImageGrid slides={slides} setMessage={setMessage} />
 
                         <button className='button-videomaker' onClick={() => { navigate('/edit_video') }}>Continue <ArrowRight /> </button>
                     </div>
