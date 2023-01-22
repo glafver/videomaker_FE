@@ -26,7 +26,6 @@ const VideoPage = () => {
     }
 
     const goToSettings = () => {
-        // localStorage.removeItem('orderID')
         navigate(-1)
     }
 
