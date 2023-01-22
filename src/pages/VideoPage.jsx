@@ -15,6 +15,7 @@ const VideoPage = () => {
     const deleteImageMutation = useDeleteImage()
 
     const shareURL = `${import.meta.env.VITE_DEPLOY_URL}/share/${localStorage.getItem('userID')}/${localStorage.getItem('orderID')}`
+    const quote = 'Have a look at my video!'
 
     const clearAll = async () => {
         let slidesLocal = JSON.parse(localStorage.getItem('slides'))
@@ -25,7 +26,7 @@ const VideoPage = () => {
     }
 
     const goToSettings = () => {
-        localStorage.removeItem('orderID')
+        // localStorage.removeItem('orderID')
         navigate(-1)
     }
 
@@ -64,22 +65,22 @@ const VideoPage = () => {
                             <span className='me-2 fw-bold'>Share:</span>
                             <WhatsappShareButton
                                 url={shareURL}
-                                quote={'Have a look at my video!'}>
+                                quote={quote}>
                                 <WhatsappIcon size={32} round={true} />
                             </WhatsappShareButton>
                             <TelegramShareButton
                                 url={shareURL}
-                                quote={'Have a look at my video!'}>
+                                quote={quote}>
                                 <TelegramIcon size={32} round={true} />
                             </TelegramShareButton>
                             <EmailShareButton
                                 url={shareURL}
-                                quote={'Have a look at my video!'}>
+                                quote={quote}>
                                 <EmailIcon size={32} round={true} />
                             </EmailShareButton>
                             <FacebookMessengerShareButton
                                 url={shareURL}
-                                quote={'Have a look at my video!'}>
+                                quote={quote}>
                                 <FacebookMessengerIcon size={32} round={true} />
                             </FacebookMessengerShareButton>
                         </div>

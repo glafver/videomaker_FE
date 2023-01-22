@@ -20,7 +20,8 @@ const useCreateVideo = () => {
                 }
             }),
             userID: localStorage.getItem('userID'),
-            soundtrack: localStorage.getItem('soundtrack') === 'none' ? '' : localStorage.getItem('soundtrack')
+            soundtrack: localStorage.getItem('soundtrack') === 'none' ? '' : localStorage.getItem('soundtrack'),
+            orderId: localStorage.getItem('orderID')
         })
 
 
