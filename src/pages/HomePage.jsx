@@ -5,7 +5,6 @@ import ImageGrid from '../components/ImageGrid'
 import { ArrowRight } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom'
 import HowTo from '../components/HowTo.jsx';
-import useDeleteVideo from '../hooks/useDeleteVideo'
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -13,18 +12,13 @@ const HomePage = () => {
     const [maxFiles, setMaxFiles] = useState(6)
     const [message, setMessage] = useState()
 
-    const deleteVideoMutation = useDeleteVideo()
-
     useEffect(() => {
         window.addEventListener('storage', () => {
             let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
             setSlides(slidesLocal)
         })
         window.dispatchEvent(new Event('storage'))
-        let video = localStorage.getItem('videoURL')
-        if (video) {
-            deleteVideoMutation.mutate()
-        }
+        localStorage.removeItem('videoURL')
         localStorage.removeItem('orderID')
         localStorage.removeItem('soundtrack')
     }, []);

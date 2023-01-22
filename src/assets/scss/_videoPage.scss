@@ -1,0 +1,83 @@
+.download-btn {
+    padding: 13px 13px 8px 19px !important;
+    margin: 0 10px;
+}
+
+.video-page-btn-wrapper {
+    margin-bottom: 50px;
+
+    @media screen and (max-width: 994px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    button {
+        margin: 7px;
+    }
+}
+
+.video {
+    width: 100%;
+
+    @media screen and (min-width: 1200px) {
+        width: 75%;
+    }
+
+    @media screen and (min-width: 2500px) {
+        width: 100%;
+    }
+}
+
+.share-link-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.link {
+    cursor: pointer;
+    width: 100%;
+    color: gray;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-word;
+    flex-grow: 1;
+}
+
+.download-video {
+    height: 32px;
+    width: 32px;
+    border-radius: 5px;
+    color: white;
+    background-color: $gray_dark_videomaker;
+    cursor: pointer;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.img404 {
+    margin: 20px 0 30px 0;
+
+    width: 100%;
+
+    @media screen and (min-width: 1200px) {
+        width: 30%;
+    }
+
+    @media screen and (min-width: 2500px) {
+        width: 50%;
+    }
+}
+
+.img404text {
+    font-size: 16px;
+    text-align: center;
+
+    @media screen and (min-width: 2500px) {
+        font-size: 30px;
+    }
+}

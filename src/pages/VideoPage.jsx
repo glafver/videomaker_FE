@@ -3,7 +3,6 @@ import { Container } from 'react-bootstrap'
 import { Download } from 'react-bootstrap-icons'
 import { useNavigate } from 'react-router-dom'
 import useDeleteImage from '../hooks/useDeleteImage'
-import useDeleteVideo from '../hooks/useDeleteVideo'
 import { WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon, FacebookMessengerShareButton, FacebookMessengerIcon, EmailShareButton, EmailIcon } from "react-share"
 
 const VideoPage = () => {
@@ -14,7 +13,6 @@ const VideoPage = () => {
     const navigate = useNavigate()
 
     const deleteImageMutation = useDeleteImage()
-    const deleteVideoMutation = useDeleteVideo()
 
     const shareURL = `${import.meta.env.VITE_DEPLOY_URL}/share/${localStorage.getItem('userID')}/${localStorage.getItem('orderID')}`
 
@@ -23,14 +21,10 @@ const VideoPage = () => {
         slidesLocal.forEach(slide => {
             deleteImageMutation.mutate(slide)
         });
-        deleteVideoMutation.mutate()
-        localStorage.removeItem('orderID')
-        localStorage.removeItem('soundtrack')
         navigate('/')
     }
 
     const goToSettings = () => {
-        deleteVideoMutation.mutate()
         localStorage.removeItem('orderID')
         navigate(-1)
     }
@@ -45,7 +39,7 @@ const VideoPage = () => {
             <div className='d-flex flex-column align-items-center justify-content-center mt-3'>
                 {videoURL &&
                     <>
-                        <video width="100%" controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
+                        <video className='video' controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
                             <source src={videoURL} type="video/mp4" onError={() => { clearAll() }} />
                         </video>
 
@@ -56,16 +50,14 @@ const VideoPage = () => {
                             </a>
                         </p>
 
-                        <div className='w-100 d-flex align-items-center justify-content-center flex-wrap pb-4'>
+                        <div className='share-link-wrapper pb-4'>
                             <p className='mb-1 fw-bold'>{!copied ? 'Copy link:' : 'Link copied!'}</p>
-                            <div className='share-link-wrapper'>
-                                <div className='link'
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(shareURL)
-                                        setCopied(true)
-                                    }}
-                                >{shareURL}</div>
-                            </div>
+                            <div className='link'
+                                onClick={() => {
+                                    navigator.clipboard.writeText(shareURL)
+                                    setCopied(true)
+                                }}
+                            >{shareURL}</div>
                         </div>
 
                         <div style={{ marginBottom: '16px' }}>
