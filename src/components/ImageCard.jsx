@@ -3,10 +3,11 @@ import Card from 'react-bootstrap/Card'
 import { X } from 'react-bootstrap-icons'
 import useDeleteImage from '../hooks/useDeleteImage'
 
-const ImageCard = ({ image }) => {
+const ImageCard = ({ image, setMessage }) => {
 	const deleteImageMutation = useDeleteImage()
 
 	const deleteSlide = () => {
+		setMessage('')
 		deleteImageMutation.mutate(image)
 	}
 
