@@ -6,7 +6,7 @@ import useUploadImages from '../hooks/useUploadImages'
 const UploadImages = ({ maxFiles, slides, message, setMessage }) => {
 
     const uploadImages = useUploadImages()
-    const maxSize = 3 * 1024 * 1024
+    const maxSize = 5 * 1024 * 1024
 
     const { getRootProps, getInputProps } = useDropzone({
         accept: {
