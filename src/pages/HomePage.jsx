@@ -5,6 +5,7 @@ import ImageGrid from '../components/ImageGrid'
 import { ArrowRight } from 'react-bootstrap-icons';
 import { useNavigate } from 'react-router-dom'
 import HowTo from '../components/HowTo.jsx';
+import axios from 'axios'
 
 const HomePage = () => {
     const navigate = useNavigate()
@@ -13,6 +14,9 @@ const HomePage = () => {
     const [message, setMessage] = useState()
 
     useEffect(() => {
+        // need to wake up server
+        axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/status/wake_up`)
+        
         window.addEventListener('storage', () => {
             let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
             setSlides(slidesLocal)
@@ -25,11 +29,9 @@ const HomePage = () => {
 
     return (
         <>
-
             <Container className='text-center home-page page'>
                 <div className='fs-1'>Quick start</div>
                 <div className='h5'>Create a slideshow from photos</div>
-
 
                 < UploadImages slides={slides} maxFiles={maxFiles} message={message} setMessage={setMessage} />
 

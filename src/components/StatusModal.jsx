@@ -19,7 +19,7 @@ const StatusModal = ({ videoStatus, setVideoStatus }) => {
             {videoStatus === 'PREPARING' &&
                 <>
                     <RingLoader size={250} color={'#8491c8'} />
-                    <p className='mt-5'>Please wait, we prepare your video. It may take some time. Do not close the window.</p>
+                    <p className='mt-5 text-center'>Please wait, we prepare your video. It may take some time. Do not close the window.</p>
                 </>
             }
             {videoStatus === 'FAILED' &&
