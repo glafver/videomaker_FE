@@ -14,7 +14,6 @@ const HomePage = () => {
     const [message, setMessage] = useState()
 
     useEffect(() => {
-        // need to wake up server
         axios.get(`${import.meta.env.VITE_SERVER_BASE_URL}/status/wake_up`)
         
         window.addEventListener('storage', () => {
