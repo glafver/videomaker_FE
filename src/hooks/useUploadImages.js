@@ -1,39 +1,39 @@
-import { useState } from 'react'
-import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
-import { v4 as uuidv4 } from 'uuid'
-import { storage } from '../firebase'
+import { useState } from 'react';
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
+import { v4 as uuidv4 } from 'uuid';
+import { storage } from '../firebase';
 
 const useUploadImages = () => {
-    const [error, setError] = useState(null)
-    const [isError, setIsError] = useState(null)
-    const [isSuccess, setIsSuccess] = useState(null)
-    const [isUploading, setIsUploading] = useState(null)
+    const [error, setError] = useState(null);
+    const [isError, setIsError] = useState(null);
+    const [isSuccess, setIsSuccess] = useState(null);
+    const [isUploading, setIsUploading] = useState(null);
 
     const upload = async (image) => {
 
-        setError(null)
-        setIsError(null)
-        setIsSuccess(null)
-        setIsUploading(null)
+        setError(null);
+        setIsError(null);
+        setIsSuccess(null);
+        setIsUploading(true);
 
         try {
 
-            const uuid = uuidv4()
+            const uuid = uuidv4();
 
-            let userID = localStorage.getItem('userID') || uuidv4()
-            localStorage.setItem('userID', userID)
+            let userID = localStorage.getItem('userID') || uuidv4();
+            localStorage.setItem('userID', userID);
 
-            const ext = image.name.substring(image.name.lastIndexOf('.') + 1)
+            const ext = image.name.substring(image.name.lastIndexOf('.') + 1);
 
-            const storageFilename = `${uuid}.${ext}`
+            const storageFilename = `${uuid}.${ext}`;
 
-            const storageRef = ref(storage, `/${userID}/${storageFilename}`)
+            const storageRef = ref(storage, `/${userID}/${storageFilename}`);
 
-            const uploadTask = uploadBytesResumable(storageRef, image)
+            const uploadTask = uploadBytesResumable(storageRef, image);
 
-            await uploadTask.then()
+            await uploadTask.then();
 
-            const url = await getDownloadURL(storageRef)
+            const url = await getDownloadURL(storageRef);
 
             const slide = {
                 name: storageFilename,
@@ -41,23 +41,23 @@ const useUploadImages = () => {
                 url,
                 duration: 1,
                 transition: 'fade'
-            }
+            };
 
-            let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : []
-            slidesLocal.unshift(slide)
-            localStorage.setItem('slides', JSON.stringify(slidesLocal))
-            window.dispatchEvent(new Event('storage'))
+            let slidesLocal = localStorage.getItem('slides') ? JSON.parse(localStorage.getItem('slides')) : [];
+            slidesLocal.unshift(slide);
+            localStorage.setItem('slides', JSON.stringify(slidesLocal));
+            window.dispatchEvent(new Event('storage'));
 
-            setIsSuccess(true)
+            setIsSuccess(true);
 
         } catch (e) {
-            setError(e)
-            setIsError(true)
+            setError(e);
+            setIsError(true);
 
         } finally {
-            setIsUploading(false)
+            setIsUploading(false);
         }
-    }
+    };
 
     return {
         error,
@@ -65,7 +65,7 @@ const useUploadImages = () => {
         isSuccess,
         isUploading,
         upload,
-    }
-}
+    };
+};
 
-export default useUploadImages
+export default useUploadImages;

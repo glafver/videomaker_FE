@@ -1,0 +1,22 @@
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    background-color: $vm-text;
+    height: fit-content;
+
+    a {
+        color: $vm-primary;
+        text-decoration: none;
+        margin-left: 10px;
+
+        &:hover {
+            color: $vm-secondary;
+        }
+
+        a:visited {
+            color: $vm-primary;
+        }
+    }
+}

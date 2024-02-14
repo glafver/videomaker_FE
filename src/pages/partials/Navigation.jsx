@@ -1,24 +1,22 @@
-import React from 'react'
+import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
 
 const Navigation = () => {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar >
             <Container>
-                <Navbar.Brand href="/">
-                    <img
+                <Navbar.Brand href="/" className='fs-2'>
+                    <Image
                         alt=""
-                        src="/images/favicon.png"
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
-                    />{' '}
-                    Videomaker
+                        src="/images/logo.png"
+                        height={70}
+                    />
                 </Navbar.Brand>
             </Container>
-        </Navbar>
-    )
-}
+        </Navbar >
+    );
+};
 
-export default Navigation
+export default Navigation;
