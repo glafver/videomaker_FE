@@ -1,8 +1,9 @@
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import ImageCard from './ImageCard'
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import ImageCard from './ImageCard';
+import Card from 'react-bootstrap/Card';
 
-const ImageGrid = ({ slides, setMessage }) => {
+const ImageGrid = ({ slides, setMessage, onAddClick }) => {
 
 	return (
 		<Row xs={2} md={6} className='image-grid'>
@@ -11,8 +12,13 @@ const ImageGrid = ({ slides, setMessage }) => {
 					<ImageCard image={image} setMessage={setMessage} />
 				</Col>
 			))}
+			<Col className="d-flex mb-4 plus-card-wrapper">
+				<Card>
+					<img src={'https://storage.googleapis.com/gafver_videomaker/plus.png'} className='' onClick={() => onAddClick()} />
+				</Card>
+			</Col>
 		</Row>
-	)
-}
+	);
+};
 
-export default ImageGrid
+export default ImageGrid;

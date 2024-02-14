@@ -1,0 +1,25 @@
+.vm-gilroy-mediumitalic {
+    font-family: 'Gilroy-MediumItalic';
+}
+
+.vm-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vm-rect {
+    background-image: linear-gradient(90deg, currentColor 1.2em, transparent 0),
+        linear-gradient(90deg, currentColor 1.2em, transparent 0),
+        linear-gradient(180deg, currentColor 1.2em, transparent 0),
+        linear-gradient(180deg, currentColor 1.2em, transparent 0);
+    background-position: -0.6em 0, -0.6em 100%, 0 -0.6em, 100% -0.6em;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 100% 0.075em, 100% 0.075em, 0.075em 100%, 0.075em 100%;
+    display: inline-block;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-family: 'Gilroy-Regular', sans-serif;
+    padding: 0.4em 0.5em;
+    width: auto;
+    align-self: center;
+}
