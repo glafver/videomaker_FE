@@ -1,33 +1,16 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { X } from 'react-bootstrap-icons';
-import useDeleteImage from '../hooks/useDeleteImage';
+import useImages from '../hooks/useImages';
 
 const ImageCard = ({ image, setMessage }) => {
-	const deleteImageMutation = useDeleteImage();
-
-	const deleteSlide = () => {
-		setMessage('');
-		deleteImageMutation.mutate(image);
-	};
-
-	const deleteImageLocal = () => {
-		let slidesLocal = JSON.parse(localStorage.getItem('slides'));
-		let slidesNew = slidesLocal.filter((slide) => {
-			if (image.name !== slide.name) {
-				return slide;
-			}
-		});
-		localStorage.setItem('slides', JSON.stringify(slidesNew));
-		window.dispatchEvent(new Event('storage'));
-	};
+	const { deleteSlideLocal, deleteSlide } = useImages();
 
 	return (
 		<>
 			<Card>
-
-				<img src={image.url} className='image-body' onError={() => { deleteImageLocal(); }} />
-				<Button className='delete-button' disabled={deleteImageMutation.isMutating} onClick={() => deleteSlide()}>
+				<img src={image.previewUrl || image.url} className='image-body' onError={() => { deleteSlideLocal(image); }} />
+				<Button className='delete-button' onClick={() => { setMessage(''); deleteSlide(image); }}>
 					<X />
 				</Button>
 
