@@ -1,39 +1,40 @@
-import React, { useState, useEffect } from 'react'
-import { Container } from 'react-bootstrap'
-import { Download } from 'react-bootstrap-icons'
-import { useNavigate } from 'react-router-dom'
-import useDeleteImage from '../hooks/useDeleteImage'
-import { WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon, FacebookMessengerShareButton, FacebookMessengerIcon, EmailShareButton, EmailIcon } from "react-share"
+import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import useDeleteImage from '../hooks/useDeleteImage';
+import { WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon, FacebookMessengerShareButton, FacebookMessengerIcon, EmailShareButton, EmailIcon } from "react-share";
+import { IoMdCloudDownload } from "react-icons/io";
+import { AttentionSeeker } from 'react-awesome-reveal';
 
 const VideoPage = () => {
 
-    const [videoURL, setVideoURL] = useState(null)
-    const [copied, setCopied] = useState(false)
+    const [videoURL, setVideoURL] = useState(null);
+    const [copied, setCopied] = useState(false);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const deleteImageMutation = useDeleteImage()
+    const deleteImageMutation = useDeleteImage();
 
-    const shareURL = `${import.meta.env.VITE_DEPLOY_URL}/share/${localStorage.getItem('userID')}/${localStorage.getItem('orderID')}`
-    const quote = 'Have a look at my video!'
+    const shareURL = `${import.meta.env.VITE_DEPLOY_URL}/share/${localStorage.getItem('userID')}/${localStorage.getItem('orderID')}`;
+    const quote = 'Have a look at my video!';
 
     const clearAll = async () => {
-        let slidesLocal = JSON.parse(localStorage.getItem('slides'))
-        localStorage.removeItem('slides')
+        let slidesLocal = JSON.parse(localStorage.getItem('slides'));
+        localStorage.removeItem('slides');
         slidesLocal.forEach(slide => {
-            deleteImageMutation.mutate(slide)
+            deleteImageMutation.mutate(slide);
         });
-        navigate('/')
-    }
+        navigate('/');
+    };
 
     const goToSettings = () => {
-        navigate(-1)
-    }
+        navigate(-1);
+    };
 
     useEffect(() => {
-        let video = localStorage.getItem('videoURL')
-        setVideoURL(video)
-    }, [])
+        let video = localStorage.getItem('videoURL');
+        setVideoURL(video);
+    }, []);
 
     return (
         <Container className='page'>
@@ -41,13 +42,15 @@ const VideoPage = () => {
                 {videoURL &&
                     <>
                         <video className='video' controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
-                            <source src={videoURL} type="video/mp4" onError={() => { clearAll() }} />
+                            <source src={videoURL} type="video/mp4" onError={() => { clearAll(); }} />
                         </video>
 
-                        <p className='mt-3 fw-bold'>
+                        <p className='mt-3 fw-bold d-flex'>
                             Download your video:
                             <a download href={videoURL}>
-                                <Download className='download-video' />
+                                <AttentionSeeker effect='pulse'>
+                                    <IoMdCloudDownload className='ms-3 fs-2 download-video' />
+                                </AttentionSeeker>
                             </a>
                         </p>
 
@@ -55,8 +58,8 @@ const VideoPage = () => {
                             <p className='mb-1 fw-bold'>{!copied ? 'Copy link:' : 'Link copied!'}</p>
                             <div className='link'
                                 onClick={() => {
-                                    navigator.clipboard.writeText(shareURL)
-                                    setCopied(true)
+                                    navigator.clipboard.writeText(shareURL);
+                                    setCopied(true);
                                 }}
                             >{shareURL}</div>
                         </div>
@@ -87,13 +90,15 @@ const VideoPage = () => {
                     </>
                 }
                 <div className='video-page-btn-wrapper'>
-                    <button className='button-videomaker-pink button-videomaker' onClick={() => { goToSettings() }}>Change video settings</button>
-                    <button className='button-videomaker-blue button-videomaker' onClick={() => { clearAll() }}>Create a new video!</button>
+                    <AttentionSeeker effect="pulse">
+                        <button className='button-18 mt-2' onClick={() => { goToSettings(); }}>Change video settings</button>
+                        <button className='button-19 mt-2' onClick={() => { clearAll(); }}>Create a new video!</button>
+                    </AttentionSeeker>
                 </div>
 
             </div>
         </Container >
-    )
-}
+    );
+};
 
-export default VideoPage
+export default VideoPage;

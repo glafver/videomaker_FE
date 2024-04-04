@@ -2,10 +2,10 @@
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
+    gap: 24px;
     flex-direction: column;
     height: auto;
     width: 100%;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
     @media screen and (min-width: 992px) {
         flex-direction: row;
@@ -20,7 +20,7 @@
 }
 
 .edit-left {
-    background-color: lightgrey;
+    background-color: $vm-secondary;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,6 @@
 
     @media screen and (min-width: 992px) {
         width: 50%;
-        border-right: 1px solid $gray_dark_videomaker;
     }
 
     .current-slide-wrapper {
@@ -47,28 +46,19 @@
 }
 
 .edit-right {
-    background-color: lightgrey;
+    background-color: $vm-secondary;
     height: 100%;
-    padding: 12px;
     width: 100%;
 
     hr {
-        margin: 8px 0;
-    }
-
-    .transition-img {
-        width: 160px;
-        height: 85px;
-        margin-top: 2px;
+        margin: 0 0 0 0;
+        color: $gray_dark_videomaker;
     }
 
     @media screen and (min-width: 992px) {
         width: 50%;
     }
 
-    @media screen and (min-width: 2500px) {
-        padding: 13px 30px;
-    }
 }
 
 .form-range {
@@ -78,28 +68,70 @@
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        background: $blue_videomaker;
+        background: $vm-primary;
         cursor: pointer;
+        margin-top: -7px;
+
+        &:active,
+        &:focus {
+            background: $vm-primary;
+        }
     }
 
     &::-moz-range-thumb {
         -webkit-appearance: none;
         appearance: none;
-        background: $blue_videomaker;
         cursor: pointer;
+
+        &:active,
+        &:focus {
+            background: $vm-primary;
+        }
+    }
+
+    &::-webkit-slider-runnable-track {
+        background: $gray_dark_videomaker;
+        height: 2px;
+    }
+
+    &::-moz-range-track {
+        background: $gray_dark_videomaker;
+        height: 2px;
+    }
+}
+
+.form-range:focus {
+    outline: none;
+    box-shadow: none;
+
+    &::-moz-range-thumb {
+        box-shadow: none !important;
+    }
+
+    &::-webkit-slider-thumb {
+        box-shadow: none !important;
+    }
+}
+
+.form-check {
+    margin: 0;
+
+    .form-check-label {
+        font-size: 15px;
     }
 }
 
 .form-check-input:checked {
-    background-color: $blue_videomaker;
-    border-color: $blue_videomaker;
+    background-color: $gray_dark_videomaker;
+    border: none;
 }
 
 .form-select:focus,
+.form-check-input:focus,
 .form-control:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px rgb(28 69 135 / 25%);
-    border-color: rgb(28 69 135 / 25%);
+    box-shadow: none;
+    border-color: #ced4da;
 }
 
 .form-label {
@@ -109,6 +141,7 @@
 .settings-wrapper {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 
     @media screen and (min-width: 992px) {
         flex-direction: row;
@@ -117,13 +150,17 @@
 
 .transition-wrapper {
     width: 100%;
-    border-bottom: 1px solid $gray_dark_videomaker;
-    padding-bottom: 12px;
+    padding: 16px;
+
+    .transition-img {
+        margin-top: 4px;
+        height: 60px;
+        aspect-ratio: 16/9;
+    }
 
     @media screen and (min-width: 992px) {
         width: 50%;
-        height: 191px;
-        padding-right: 12px;
+        padding-right: 16px;
         padding-bottom: 0;
         border-right: 1px solid $gray_dark_videomaker;
         border-bottom: 0;
@@ -132,18 +169,22 @@
 
 .soundtrack-wrapper {
     width: 100%;
-    padding-top: 12px;
+    padding: 16px;
+    border-top: 1px solid $gray_dark_videomaker;
 
     @media screen and (min-width: 992px) {
         width: 50%;
-        padding-left: 12px;
-        padding-top: 0;
+        border-top: none;
     }
 }
 
 .sortable-slides-description {
     margin-bottom: 10px;
+    text-align: center;
 
+    @media screen and (min-width: 992px) {
+        text-align: right;
+    }
 }
 
 .sortable-slides-row-wrapper {
@@ -179,7 +220,6 @@
     display: flex;
     flex-direction: row;
     user-select: none;
-    // margin-bottom: 10px;
 
     width: fit-content;
     min-width: 100%;
@@ -247,6 +287,8 @@
             width: 40px;
             height: 40px;
             opacity: 50%;
+            background-color: $vm-red;
+            border-color: $vm-red;
 
             &:hover {
                 opacity: 75%;
@@ -285,11 +327,6 @@
 
         img {
             height: 75%;
-        }
-
-        button {
-            background-color: $pink_videomaker;
-            border-color: $pink_videomaker;
         }
     }
 

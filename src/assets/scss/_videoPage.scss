@@ -1,14 +1,10 @@
-.download-btn {
-    padding: 13px 13px 8px 19px !important;
-    margin: 0 10px;
-}
-
 .video-page-btn-wrapper {
     margin-bottom: 50px;
+    display: flex;
 
     @media screen and (max-width: 994px) {
-        display: flex;
         flex-direction: column;
+        align-items: center;
     }
 
     button {
@@ -28,12 +24,17 @@
     }
 }
 
+.download-video {
+    color: $vm-primary;
+    margin-top: -5px;
+}
+
 .share-link-wrapper {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    justify-content: center
 }
 
 .link {
@@ -48,21 +49,10 @@
     flex-grow: 1;
 }
 
-.download-video {
-    height: 32px;
-    width: 32px;
-    border-radius: 5px;
-    color: white;
-    background-color: $gray_dark_videomaker;
-    cursor: pointer;
-    padding: 5px;
-    margin-left: 10px;
-}
-
 .img404 {
     margin: 20px 0 30px 0;
 
-    width: 100%;
+    width: 50%;
 
     @media screen and (min-width: 1200px) {
         width: 30%;

@@ -16,8 +16,8 @@ const HomePage = () => {
                 <div className="hero-title">
                     <Bounce triggerOnce>
                         <div>
-                            <h1>Welcome to Videomaker</h1>
-                            <p className='m-0'>
+                            <h1 style={{ fontWeight: '900' }}>Welcome to Videomaker</h1>
+                            <p className='m-0 fs-2'>
                                 Boost your listings with Videomaker, the essential service for turning property photos into stunning video slideshows.
                             </p>
                         </div>

@@ -1,32 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
-import { useParams } from 'react-router-dom'
-import { ref, getDownloadURL } from 'firebase/storage'
-import { storage } from '../firebase'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import { useParams } from 'react-router-dom';
+import { ref, getDownloadURL } from 'firebase/storage';
+import { storage } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { AttentionSeeker } from 'react-awesome-reveal';
 
 const SharePage = () => {
 
-    const [url, setUrl] = useState()
-    const [error, setError] = useState()
-    const { id, order } = useParams()
-    const navigate = useNavigate()
+    const [url, setUrl] = useState();
+    const [error, setError] = useState();
+    const { id, order } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!id || !order) {
-            return
+            return;
         }
 
-        const storageRef = ref(storage, `/${id}/${order}.mp4`)
+        const storageRef = ref(storage, `/${id}/${order}.mp4`);
         const url = getDownloadURL(storageRef)
             .then((res) => {
-                setUrl(res)
+                setUrl(res);
             })
             .catch((error) => {
-                setError(true)
-            })
+                setError(true);
+            });
 
-    }, [id, order])
+    }, [id, order]);
 
     return (
         <Container className='page'>
@@ -34,7 +35,7 @@ const SharePage = () => {
                 {url &&
                     <>
                         <video className='video' controls disablePictureInPicture disableRemotePlayback controlsList="noplaybackrate nodownload">
-                            <source src={url} type="video/mp4" onError={(e) => { console.log(e) }} />
+                            <source src={url} type="video/mp4" onError={(e) => { console.log(e); }} />
                         </video>
                     </>
                 }
@@ -42,13 +43,15 @@ const SharePage = () => {
                     <>
                         <img src={'/images/404.png'} alt="" className='img404' />
                         <p className='img404text' >Sorry, the video you are looking for was not found.</p>
-                        <button className='button-videomaker-pink button-videomaker' onClick={() => { navigate('/') }}>Create own video!</button>
+                        <AttentionSeeker effect='heartBeat'>
+                            <button className='button-18 mt-5' onClick={() => { navigate('/'); }}>Create own video!</button>
+                        </AttentionSeeker>
                     </>
                 }
 
             </div>
         </Container>
-    )
-}
+    );
+};
 
-export default SharePage
+export default SharePage;
