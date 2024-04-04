@@ -7,3 +7,7 @@ status = 200
   for = "/src/assets/scss/fonts/gilroy/*.ttf"
   [headers.values]
   Content-Type = "font/ttf"
+
+  [build]
+  command = "git lfs pull && npm run build"
+  publish = "build"
