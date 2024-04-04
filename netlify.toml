@@ -8,6 +8,6 @@ status = 200
   [headers.values]
   Content-Type = "font/ttf"
 
-  [build]
+[build]
   command = "git lfs pull && npm run build"
-  publish = "build"
+  publish = "dist"
