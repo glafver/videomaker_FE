@@ -1,11 +1,11 @@
-import './assets/scss/App.scss'
-import { Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage'
-import EditVideoPage from './pages/EditVideoPage'
-import Navigation from './pages/partials/Navigation'
-import VideoPage from './pages/VideoPage'
-import Footer from './pages/partials/Footer'
-import SharePage from './pages/SharePage'
+import './assets/scss/App.scss';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import EditVideoPage from './pages/EditVideoPage';
+import Navigation from './pages/partials/Navigation';
+import VideoPage from './pages/VideoPage';
+import Footer from './pages/partials/Footer';
+import SharePage from './pages/SharePage';
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
       </Routes>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
