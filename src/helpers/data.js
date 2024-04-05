@@ -64,7 +64,7 @@ const transitions = [
 const trackUrls = [
     { value: 'none', label: 'No soundtrack' },
     {
-        value: 'https://cdn.pixabay.com/download/audio/2022/10/12/audio_2eca99b967.mp3?filename=happy-acoustic-guitar-background-music-122614.mp3',
+        value: 'https://cdn.pixabay.com/download/audio/2022/10/12/audio_2eca99b967.mp3',
         label: 'Happy acoustic guitar'
     },
     {
