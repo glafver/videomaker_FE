@@ -54,7 +54,7 @@ const BenefitsSection = () => {
 
     return (
         <Container className="benefits-section" >
-            <div className="text-center fw-bold mb-5 vm-rect fs-2">Why to choose Videomaker?</div>
+            <div className="text-center fw-bold mb-5 vm-rect">Why to choose Videomaker?</div>
             <Fade>
                 {benefits.map((benefit, index) => (
                     <BenefitCard

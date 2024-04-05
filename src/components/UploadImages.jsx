@@ -64,7 +64,7 @@ const UploadImages = () => {
     return (
         <div>
             <div id='quick-start' className='d-flex flex-column vm-center start-section'>
-                <div className='fs-2 fw-bold mb-3 vm-rect'>Quick start</div>
+                <div className='fw-bold mb-3 vm-rect'>Quick start</div>
                 <div {...getRootProps()} className="dropzone-wrapper"
                     onMouseDown={() => {
                         if ((~maxFiles) !== (~slides.length)) {

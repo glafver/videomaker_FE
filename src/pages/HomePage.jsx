@@ -23,7 +23,6 @@ const HomePage = () => {
                         </div>
                     </Bounce>
                 </div>
-
             </div>
             <Container >
                 <BenefitsSection />

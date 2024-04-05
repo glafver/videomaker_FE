@@ -25,7 +25,7 @@ const testimonials = [
 const Testimonials = () => {
     return (
         <div className="testimonials-section">
-            <div className="text-center fw-bold mb-3 vm-rect fs-2">What do our clients say?</div>
+            <div className="text-center fw-bold mb-3 vm-rect">What do our clients say?</div>
             <Carousel pause='hover' indicators={false} className="carousel-dark slide mx-auto">
                 {testimonials.map((testimonial, index) => (
                     <Carousel.Item key={index} className='w-100 my-5'>
